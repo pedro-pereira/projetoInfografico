@@ -1,0 +1,252 @@
+{"frames": {
+
+"personagem respirando com cpap0001.png":
+{
+	"frame": {"x":0,"y":0,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+},
+"personagem respirando com cpap0002.png":
+{
+	"frame": {"x":210,"y":0,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+},
+"personagem respirando com cpap0003.png":
+{
+	"frame": {"x":420,"y":0,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+},
+"personagem respirando com cpap0004.png":
+{
+	"frame": {"x":630,"y":0,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+},
+"personagem respirando com cpap0005.png":
+{
+	"frame": {"x":840,"y":0,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+},
+"personagem respirando com cpap0006.png":
+{
+	"frame": {"x":1050,"y":0,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+},
+"personagem respirando com cpap0007.png":
+{
+	"frame": {"x":1260,"y":0,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+},
+"personagem respirando com cpap0008.png":
+{
+	"frame": {"x":1470,"y":0,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+},
+"personagem respirando com cpap0009.png":
+{
+	"frame": {"x":0,"y":133,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+},
+"personagem respirando com cpap0010.png":
+{
+	"frame": {"x":210,"y":133,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+},
+"personagem respirando com cpap0011.png":
+{
+	"frame": {"x":420,"y":133,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+},
+"personagem respirando com cpap0012.png":
+{
+	"frame": {"x":630,"y":133,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+},
+"personagem respirando com cpap0013.png":
+{
+	"frame": {"x":840,"y":133,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+},
+"personagem respirando com cpap0014.png":
+{
+	"frame": {"x":1050,"y":133,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+},
+"personagem respirando com cpap0015.png":
+{
+	"frame": {"x":1260,"y":133,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+},
+"personagem respirando com cpap0016.png":
+{
+	"frame": {"x":1470,"y":133,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+},
+"personagem respirando com cpap0017.png":
+{
+	"frame": {"x":0,"y":266,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+},
+"personagem respirando com cpap0018.png":
+{
+	"frame": {"x":210,"y":266,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+},
+"personagem respirando com cpap0019.png":
+{
+	"frame": {"x":420,"y":266,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+},
+"personagem respirando com cpap0020.png":
+{
+	"frame": {"x":630,"y":266,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+},
+"personagem respirando com cpap0021.png":
+{
+	"frame": {"x":840,"y":266,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+},
+"personagem respirando com cpap0022.png":
+{
+	"frame": {"x":1050,"y":266,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+},
+"personagem respirando com cpap0023.png":
+{
+	"frame": {"x":1260,"y":266,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+},
+"personagem respirando com cpap0024.png":
+{
+	"frame": {"x":1470,"y":266,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+},
+"personagem respirando com cpap0025.png":
+{
+	"frame": {"x":0,"y":399,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+},
+"personagem respirando com cpap0026.png":
+{
+	"frame": {"x":210,"y":399,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+},
+"personagem respirando com cpap0027.png":
+{
+	"frame": {"x":420,"y":399,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+},
+"personagem respirando com cpap0028.png":
+{
+	"frame": {"x":630,"y":399,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+},
+"personagem respirando com cpap0029.png":
+{
+	"frame": {"x":840,"y":399,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+},
+"personagem respirando com cpap0030.png":
+{
+	"frame": {"x":1050,"y":399,"w":210,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":133},
+	"sourceSize": {"w":210,"h":133}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "animação (30)-20190514T032947Z-001.png",
+	"format": "RGBA8888",
+	"size": {"w":1680,"h":532},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:5e0b10f7aa5c9f2f85dfd8f10c574ef9:dfdd8e32e0eec8610b87f8b588cffdc6:20102243e57f3c41f3adbf8004fcc6ed$"
+}
+}
