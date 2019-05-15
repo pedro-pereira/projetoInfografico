@@ -19,7 +19,6 @@ function preload (){
 	game.load.image('tituloPrincipal'                    , 'imagens/tituloPrincipal.png');
 
 	game.load.image('travesseiro'                        , 'imagens/travesseiro.png');
-	game.load.image('personagemPrincipal'                , 'imagens/personagemDormindo.png');
 
 	game.load.image('grupoApresentacao'                  , 'imagens/ovelha-1.png');
 	game.load.image('grupoTratamentos'                   , 'imagens/ovelha-2.png');
@@ -53,10 +52,9 @@ function preload (){
 	game.load.image('botaoPlay'                          , 'imagens/botaoPlay.png');
 	game.load.image('textoArrasteCpap'                   , 'imagens/textoArrasteCpap.png');
 	game.load.atlasJSONHash('personagemRespirandoErrado' , 'imagens/sprite_personagem_respirando_errado.png'
-														 , 'imagens/sprite_personagem_respirando_errado.json');
-															  
+                                                         , 'imagens/sprite_personagem_respirando_errado.json');
 	game.load.atlasJSONHash('personagemRespirandoCerto'  , 'imagens/sprite_personagem_respirando_certo.png'
-														 , 'imagens/sprite_personagem_respirando_certo.json');
+                                                         , 'imagens/sprite_personagem_respirando_certo.json');
 }
 
 function create (){
@@ -69,8 +67,12 @@ function create (){
 	}
 
 	this.add.image(96, 32, "tituloPrincipal");
-	travesseiro = game.add.sprite(390, 310, 'travesseiro');
-	personagemPrincipal = game.add.sprite(450, 350, 'personagemPrincipal');
+	
+	personagemPrincipal = this.add.sprite(350, 350, 'personagemRespirandoErrado');
+	personagemPrincipal.scale.x = 1.5;
+	personagemPrincipal.scale.y = 1.5;
+	personagemPrincipal.animations.add('run');
+	personagemPrincipal.animations.play('run', 15, true);
 
 	reg.modal = new gameModal(game);
 	createModals();
@@ -83,7 +85,8 @@ function create (){
 	// GRUPO TRATAMENTOS
 	grupoTratamentos = game.add.sprite(289, 150, 'grupoTratamentos');
 	grupoTratamentos.inputEnabled = true;
-	grupoTratamentos.events.onInputDown.add(showModalTratamentos, this);
+	// Comentada para futura implementação
+	//grupoTratamentos.events.onInputDown.add(showModalTratamentos, this);
 
 	// GRUPO CPAP
 	grupoCpap = game.add.sprite(611, 150, 'grupoCpap');
@@ -93,7 +96,8 @@ function create (){
 	// GRUPO PERGUNTAS
 	grupoPerguntas = game.add.sprite(772, 340, 'grupoPerguntas');
 	grupoPerguntas.inputEnabled = true;
-	grupoPerguntas.events.onInputDown.add(showModalPerguntas, this);
+	// Comentada para futura implementação
+	// grupoPerguntas.events.onInputDown.add(showModalPerguntas, this);
 
 	// Modal CPAP
 	personagemRespirandoErrado = reg.modal.getModalItem("modalCpap", 2);
@@ -113,7 +117,7 @@ function create (){
 	aparelhoCpap = reg.modal.getModalItem("modalCpap", 4);
 	aparelhoCpap.inputEnabled = true;
 	aparelhoCpap.input.enableDrag(true);
-	
+
 	textoArrasteCpap = reg.modal.getModalItem("modalCpap", 6);
 	textoArrasteCpap.alpha = 0;
 
@@ -154,8 +158,6 @@ function create (){
 
 function update () {
 	
-	// console.log("personagemRespirandoErrado.x: " + personagemRespirandoErrado.x + " - personagemRespirandoErrado.y" + personagemRespirandoErrado.y);
-	
 	// Faz as ovelhas aumentarem de tamanho - Início
 	if (grupoApresentacao.input.pointerOver()) {
 		 tween = game.add.tween(grupoApresentacao.scale).to( { x: 1.3, y: 1.3 }, 1000, Phaser.Easing.Elastic.Out, true);
@@ -181,12 +183,14 @@ function update () {
 		tween = game.add.tween(grupoPerguntas.scale).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Elastic.Out, true);
 	}
 	// Faz as ovelhas aumentarem de tamanho - Fim
-	
+
+	// Faz o botão de player aumentar de tamanho - Início
 	if (botaoPlay.input.pointerOver()) {
 		 tween = game.add.tween(botaoPlay.scale).to( { x: 1.2, y: 1.2 }, 1000, Phaser.Easing.Elastic.Out, true);
 	} else {
 		tween = game.add.tween(botaoPlay.scale).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Elastic.Out, true);
 	}
+	// Faz o botão de player aumentar de tamanho - Fim
 
 	// Limitadores da tela para a máscara no Pop-Up
 	if(aparelhoCpap.x < 91 ) aparelhoCpap.x = 91;
@@ -207,7 +211,7 @@ function update () {
 				desapareceCpap();
 			}
 	}
-	
+
 	// Faz as moedas rotacionarem - Início
 	moeda11.events.onInputDown.add(function(){
 		if(moeda11.animations.isPlaying) {
@@ -216,7 +220,7 @@ function update () {
 			moeda11.animations.play('run', 15, false);
 		}
 	}, this);
-	
+
 	moeda12.events.onInputDown.add(function(){
 		if(moeda12.animations.isPlaying) {
 			moeda12.animations.stop();
@@ -224,7 +228,7 @@ function update () {
 			moeda12.animations.play('run', 15, false);
 		}
 	}, this);
-	
+
 	moeda21.events.onInputDown.add(function(){
 		if(moeda21.animations.isPlaying) {
 			moeda21.animations.stop();
@@ -232,7 +236,7 @@ function update () {
 			moeda21.animations.play('run', 15, false);
 		}
 	}, this);
-	
+
 	moeda22.events.onInputDown.add(function(){
 		if(moeda22.animations.isPlaying) {
 			moeda22.animations.stop();
@@ -240,7 +244,7 @@ function update () {
 			moeda22.animations.play('run', 15, false);
 		}
 	}, this);
-	
+
 	moeda31.events.onInputDown.add(function(){
 		if(moeda31.animations.isPlaying) {
 			moeda31.animations.stop();
@@ -248,7 +252,7 @@ function update () {
 			moeda31.animations.play('run', 15, false);
 		}
 	}, this);
-	
+
 	moeda32.events.onInputDown.add(function(){
 		if(moeda32.animations.isPlaying) {
 			moeda32.animations.stop();
@@ -257,26 +261,26 @@ function update () {
 		}
 	}, this);
 	// Faz as moedas rotacionarem - Fim
-	
+
 	// Faz as moedas aumentarem de tamanho - Início
 	if (moeda11.input.pointerOver()) {
 		 tween = game.add.tween(moeda11.scale).to( { x: 1.3, y: 1.3 }, 1000, Phaser.Easing.Elastic.Out, true);
 	} else {
 		tween = game.add.tween(moeda11.scale).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Elastic.Out, true);
 	}
-	
+
 	if (moeda12.input.pointerOver()) {
 		 tween = game.add.tween(moeda12.scale).to( { x: 1.3, y: 1.3 }, 1000, Phaser.Easing.Elastic.Out, true);
 	} else {
 		tween = game.add.tween(moeda12.scale).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Elastic.Out, true);
 	}
-	
+
 	if (moeda21.input.pointerOver()) {
 		 tween = game.add.tween(moeda21.scale).to( { x: 1.3, y: 1.3 }, 1000, Phaser.Easing.Elastic.Out, true);
 	} else {
 		tween = game.add.tween(moeda21.scale).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Elastic.Out, true);
 	}
-	
+
 	if (moeda22.input.pointerOver()) {
 		 tween = game.add.tween(moeda22.scale).to( { x: 1.3, y: 1.3 }, 1000, Phaser.Easing.Elastic.Out, true);
 	} else {
@@ -288,7 +292,7 @@ function update () {
 	} else {
 		tween = game.add.tween(moeda31.scale).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Elastic.Out, true);
 	}
-	
+
 	if (moeda32.input.pointerOver()) {
 		 tween = game.add.tween(moeda32.scale).to( { x: 1.3, y: 1.3 }, 1000, Phaser.Easing.Elastic.Out, true);
 	} else {
@@ -496,21 +500,25 @@ function createModals() {
 
 // Modal #1 - Apresentação
 function showModalApresentacao(){
+	desabilitaTodasOvelhas();
 	reg.modal.showModal("modalApresentacao");
 }
 
 // Modal #2 - Tratamentos
 function showModalTratamentos(){
+	desabilitaTodasOvelhas();
 	reg.modal.showModal("modalTratamentos");
 }
 
 // Modal #3 - Perguntas
 function showModalPerguntas(){
+	desabilitaTodasOvelhas();
 	reg.modal.showModal("modalPerguntas");
 }
 
 // Modal #5 - Cpap
 function showModalCpap(){
+	desabilitaTodasOvelhas();
 	reg.modal.showModal("modalCpap");
 }
 
@@ -520,11 +528,13 @@ function hide() {
 }
 
 function hideModalApresentacao(){
+	habilitaTodasOvelhas();
 	reg.modal.hideModal("modalApresentacao");
 }
 
 // Função que faz popup desaparecer e coloca os valores no padrão
 function hideModalCpap(){
+	habilitaTodasOvelhas();
 	reg.modal.hideModal("modalCpap");
 	mascaraAcoplada = false;
 	textoArrasteCpap.alpha = 0;
@@ -572,4 +582,18 @@ function apareceCpap() {
 
 function desaparecePersonagem(){
 	personagemRespirandoCerto.y = 10000;
+}
+
+function desabilitaTodasOvelhas() {
+	grupoApresentacao.inputEnabled = false;
+	grupoTratamentos.inputEnabled  = false;
+	grupoCpap.inputEnabled         = false;
+	grupoPerguntas.inputEnabled    = false;
+}
+
+function habilitaTodasOvelhas() {
+	grupoApresentacao.inputEnabled = true;
+	grupoTratamentos.inputEnabled  = true;
+	grupoCpap.inputEnabled         = true;
+	grupoPerguntas.inputEnabled    = true;
 }
