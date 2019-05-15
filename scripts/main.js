@@ -484,8 +484,13 @@ function createModals() {
 				offsetY: 150,
 				offsetX: 270,
 				callback : function(){
+					window.open("https://www.youtube.com/?gl=BR&hl=pt");
+					
+					/*
+					// Comentado por ainda precisar de refinamentos
 					var overlay = document.querySelector('.modal');
 					overlay.style.display = "block";
+					*/
 				}
 			},
 			{
