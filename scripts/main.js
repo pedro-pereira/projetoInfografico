@@ -7,6 +7,7 @@ var grupoApresentacao, grupoTratamentos, grupoCpap, grupoPerguntas;
 var tween;
 
 var moeda11, moeda12, moeda21, moeda22, moeda31, moeda32;
+var respiracaoApneia, respiracaoCorreta;
 
 var aparelhoCpap, botaoPlay, textoArrasteCpap;
 var mascaraAcoplada = false;
@@ -35,6 +36,14 @@ function preload (){
 	game.load.atlasJSONHash('moeda22'                    , 'imagens/moedas.png', 'imagens/moedas.json');
 	game.load.atlasJSONHash('moeda31'                    , 'imagens/moedas.png', 'imagens/moedas.json');
 	game.load.atlasJSONHash('moeda32'                    , 'imagens/moedas.png', 'imagens/moedas.json');
+
+	game.load.atlasJSONHash('respiracaoApneia'           , 'imagens/sprite-respiracao-apneia.png'
+                                                         , 'imagens/sprite-respiracao-apneia.json');
+	game.load.atlasJSONHash('respiracaoCorreta'          , 'imagens/sprite-respiracao-correta.png'
+                                                         , 'imagens/sprite-respiracao-correta.json');
+
+	game.load.image('legendaRespiracaoApneia'          , 'imagens/legenda-respiracao-apneia.png');
+	game.load.image('legendaRespiracaoCorreta'           , 'imagens/legenda-respiracao-correta.png');
 
 	// Modal #2
 	game.load.image('play'                               , 'imagens/modal2_play.png');
@@ -67,7 +76,7 @@ function create (){
 	}
 
 	this.add.image(96, 32, "tituloPrincipal");
-	
+
 	personagemPrincipal = this.add.sprite(350, 350, 'personagemRespirandoErrado');
 	personagemPrincipal.scale.x = 1.5;
 	personagemPrincipal.scale.y = 1.5;
@@ -154,6 +163,14 @@ function create (){
 	moeda32 = reg.modal.getModalItem("modalApresentacao", 7);
 	moeda32.animations.add('run');
 	moeda32.inputEnabled = true;
+
+	respiracaoApneia = reg.modal.getModalItem("modalApresentacao", 8);
+	respiracaoApneia.animations.add('run');
+	respiracaoApneia.animations.play('run', 6, true);
+
+	respiracaoCorreta = reg.modal.getModalItem("modalApresentacao", 9);
+	respiracaoCorreta.animations.add('run');
+	respiracaoCorreta.animations.play('run', 7, true);
 }
 
 function update () {
@@ -363,6 +380,32 @@ function createModals() {
 				offsetX: 50,
 				contentScale: 1,
 				atlasParent: "moeda32"
+			},
+			{
+				type: "sprite",
+				offsetY: 0,
+				offsetX: -280,
+				contentScale: 1,
+				atlasParent: "respiracaoApneia"
+			},
+			{
+				type: "sprite",
+				offsetY: 140,
+				offsetX: -280,
+				contentScale: 1,
+				atlasParent: "respiracaoCorreta"
+			},
+			{
+				type : "image",
+				content: "legendaRespiracaoApneia",
+				offsetY: -60,
+				offsetX: -280
+			},
+			{
+				type : "image",
+				content: "legendaRespiracaoCorreta",
+				offsetY: 80,
+				offsetX: -280
 			}
 		]
 	});
