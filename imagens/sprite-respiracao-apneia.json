@@ -1,0 +1,60 @@
+{"frames": {
+
+"respiração com apneia0001.png":
+{
+	"frame": {"x":0,"y":0,"w":130,"h":130},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":130,"h":130},
+	"sourceSize": {"w":130,"h":130}
+},
+"respiração com apneia0002.png":
+{
+	"frame": {"x":130,"y":0,"w":130,"h":130},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":130,"h":130},
+	"sourceSize": {"w":130,"h":130}
+},
+"respiração com apneia0003.png":
+{
+	"frame": {"x":260,"y":0,"w":130,"h":130},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":130,"h":130},
+	"sourceSize": {"w":130,"h":130}
+},
+"respiração com apneia0004.png":
+{
+	"frame": {"x":390,"y":0,"w":130,"h":130},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":130,"h":130},
+	"sourceSize": {"w":130,"h":130}
+},
+"respiração com apneia0005.png":
+{
+	"frame": {"x":520,"y":0,"w":130,"h":130},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":130,"h":130},
+	"sourceSize": {"w":130,"h":130}
+},
+"respiração com apneia0006.png":
+{
+	"frame": {"x":650,"y":0,"w":130,"h":130},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":130,"h":130},
+	"sourceSize": {"w":130,"h":130}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "respiracao-apneia.png",
+	"format": "RGBA8888",
+	"size": {"w":780,"h":130},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:32fd898dc536c3e798438a71db0d11c8:7b74fd4f9ec3d8befc587b8e64d4748f:5706b5ba8148620e54012abf96d4dd2e$"
+}
+}
