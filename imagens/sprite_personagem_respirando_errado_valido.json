@@ -1,0 +1,252 @@
+{"frames": {
+
+"personagem respirando errado0001.png":
+{
+	"frame": {"x":0,"y":0,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+},
+"personagem respirando errado0002.png":
+{
+	"frame": {"x":220,"y":0,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+},
+"personagem respirando errado0003.png":
+{
+	"frame": {"x":440,"y":0,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+},
+"personagem respirando errado0004.png":
+{
+	"frame": {"x":660,"y":0,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+},
+"personagem respirando errado0005.png":
+{
+	"frame": {"x":880,"y":0,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+},
+"personagem respirando errado0006.png":
+{
+	"frame": {"x":1100,"y":0,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+},
+"personagem respirando errado0007.png":
+{
+	"frame": {"x":1320,"y":0,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+},
+"personagem respirando errado0008.png":
+{
+	"frame": {"x":1540,"y":0,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+},
+"personagem respirando errado0009.png":
+{
+	"frame": {"x":0,"y":155,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+},
+"personagem respirando errado0010.png":
+{
+	"frame": {"x":220,"y":155,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+},
+"personagem respirando errado0011.png":
+{
+	"frame": {"x":440,"y":155,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+},
+"personagem respirando errado0012.png":
+{
+	"frame": {"x":660,"y":155,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+},
+"personagem respirando errado0013.png":
+{
+	"frame": {"x":880,"y":155,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+},
+"personagem respirando errado0014.png":
+{
+	"frame": {"x":1100,"y":155,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+},
+"personagem respirando errado0015.png":
+{
+	"frame": {"x":1320,"y":155,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+},
+"personagem respirando errado0016.png":
+{
+	"frame": {"x":1540,"y":155,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+},
+"personagem respirando errado0017.png":
+{
+	"frame": {"x":0,"y":310,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+},
+"personagem respirando errado0018.png":
+{
+	"frame": {"x":220,"y":310,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+},
+"personagem respirando errado0019.png":
+{
+	"frame": {"x":440,"y":310,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+},
+"personagem respirando errado0020.png":
+{
+	"frame": {"x":660,"y":310,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+},
+"personagem respirando errado0021.png":
+{
+	"frame": {"x":880,"y":310,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+},
+"personagem respirando errado0022.png":
+{
+	"frame": {"x":1100,"y":310,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+},
+"personagem respirando errado0023.png":
+{
+	"frame": {"x":1320,"y":310,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+},
+"personagem respirando errado0024.png":
+{
+	"frame": {"x":1540,"y":310,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+},
+"personagem respirando errado0025.png":
+{
+	"frame": {"x":0,"y":465,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+},
+"personagem respirando errado0026.png":
+{
+	"frame": {"x":220,"y":465,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+},
+"personagem respirando errado0027.png":
+{
+	"frame": {"x":440,"y":465,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+},
+"personagem respirando errado0028.png":
+{
+	"frame": {"x":660,"y":465,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+},
+"personagem respirando errado0029.png":
+{
+	"frame": {"x":880,"y":465,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+},
+"personagem respirando errado0030.png":
+{
+	"frame": {"x":1100,"y":465,"w":220,"h":155},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":220,"h":155},
+	"sourceSize": {"w":220,"h":155}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "animação (30)-20190514T032947Z-001.png",
+	"format": "RGBA8888",
+	"size": {"w":1760,"h":620},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:9ffeff9de3ad792e8b335866bac3f39d:a0811d6b5702b3421580874e02b89318:20102243e57f3c41f3adbf8004fcc6ed$"
+}
+}
