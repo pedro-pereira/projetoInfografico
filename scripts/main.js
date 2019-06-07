@@ -141,7 +141,7 @@ function create (){
 	this.add.image(32, 32, "telaCinza");
 	telaPrincipal = this.add.image(32, 32, "telaPrincipal");
 
-	personagemPrincipal = this.add.sprite(350, 360, 'personagemRespirandoErrado');
+	personagemPrincipal = this.add.sprite(350, 358, 'personagemRespirandoErrado');
 	personagemPrincipal.scale.x = 1.5;
 	personagemPrincipal.scale.y = 1.5;
 	personagemPrincipal.animations.add('run');
@@ -639,7 +639,7 @@ function createModals() {
 			{
 				type: "sprite",
 				offsetY: 2000,
-				contentScale: 1.2,
+				contentScale: 1,
 				atlasParent: "personagemRespirandoCerto"
 			},
 			{
@@ -1061,6 +1061,9 @@ function showModalCpap(){
 	textoInformacoes = reg.modal.getModalItem("modalCpap", 16);
 	textoInformacoes.x = 700;
 	textoInformacoes.y = 440;
+	
+	console.log(personagemRespirandoCerto);
+	console.log(personagemRespirandoErrado);
 
 	reg.modal.showModal("modalCpap");
 }
@@ -1172,7 +1175,7 @@ function showModalCreditos(){
 	telaCreditos.y = 80;
 	
 	textoCreditos = reg.modal.getModalItem("modalCreditos", 2);
-	textoCreditos.x = 300;
+	textoCreditos.x = 320;
 	textoCreditos.y = 120;
 	
 	reg.modal.showModal("modalCreditos");
@@ -1191,11 +1194,11 @@ function hide() {
 
 // Função que faz personagem aparece
 function aparecePersonagemDormindo(){
-	personagemRespirandoCerto.width = 350;
-	personagemRespirandoCerto.height = 200;
+	personagemRespirandoCerto.scale.x = 1.6;
+	personagemRespirandoCerto.scale.y = 1.6;
 
-	personagemRespirandoCerto.x = 550;
-	personagemRespirandoCerto.y = 150;
+	personagemRespirandoCerto.x = 580;
+	personagemRespirandoCerto.y = 118;
 }
 
 // Função que faz com que o personagem acordado desapareça junto com a máscara
@@ -1224,7 +1227,7 @@ function apareceCpap() {
 	personagemRespirandoErrado.width = personagemRespirandoErradoOriginal.width;
 	personagemRespirandoErrado.height = personagemRespirandoErradoOriginal.height;
 	personagemRespirandoErrado.scale.x = 1.2;
-	personagemRespirandoErrado.scale.y = 1.2;	
+	personagemRespirandoErrado.scale.y = 1.2;
 }
 
 function desaparecePersonagem(){
@@ -1349,9 +1352,9 @@ function reiniciaIconesTratamentos() {
 
 function alteraEscalaImagem(imagem, escala){
 	if (imagem.input.pointerOver()) {
-		tween = game.add.tween(imagem.scale).to( { x: escala, y: escala }, 1000, Phaser.Easing.Elastic.Out, true);
+		tween = game.add.tween(imagem.scale).to( { x: escala, y: escala }, 1000, Phaser.Easing.Circular.Out, true);
 	} else {
-		tween = game.add.tween(imagem.scale).to( { x: 1, y: 1}, 1000, Phaser.Easing.Elastic.Out, true);
+		tween = game.add.tween(imagem.scale).to( { x: 1, y: 1}, 1000, Phaser.Easing.Circular.Out, true);
 	}
 }
 
