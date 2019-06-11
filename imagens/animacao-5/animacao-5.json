@@ -1,7 +1,7 @@
 {"frames": [
 
 {
-	"filename": "animacao-5-1.png",
+	"filename": "animacao-6-1.png",
 	"frame": {"x":0,"y":0,"w":100,"h":100},
 	"rotated": false,
 	"trimmed": false,
@@ -9,7 +9,7 @@
 	"sourceSize": {"w":100,"h":100}
 },
 {
-	"filename": "animacao-5-2.png",
+	"filename": "animacao-6-2.png",
 	"frame": {"x":100,"y":0,"w":100,"h":100},
 	"rotated": false,
 	"trimmed": false,
@@ -17,7 +17,7 @@
 	"sourceSize": {"w":100,"h":100}
 },
 {
-	"filename": "animacao-5-3.png",
+	"filename": "animacao-6-3.png",
 	"frame": {"x":200,"y":0,"w":100,"h":100},
 	"rotated": false,
 	"trimmed": false,
@@ -25,7 +25,7 @@
 	"sourceSize": {"w":100,"h":100}
 },
 {
-	"filename": "animacao-5-4.png",
+	"filename": "animacao-6-4.png",
 	"frame": {"x":300,"y":0,"w":100,"h":100},
 	"rotated": false,
 	"trimmed": false,
@@ -33,7 +33,7 @@
 	"sourceSize": {"w":100,"h":100}
 },
 {
-	"filename": "animacao-5-5.png",
+	"filename": "animacao-6-5.png",
 	"frame": {"x":400,"y":0,"w":100,"h":100},
 	"rotated": false,
 	"trimmed": false,
@@ -41,7 +41,7 @@
 	"sourceSize": {"w":100,"h":100}
 },
 {
-	"filename": "animacao-5-6.png",
+	"filename": "animacao-6-6.png",
 	"frame": {"x":500,"y":0,"w":101,"h":100},
 	"rotated": false,
 	"trimmed": false,
