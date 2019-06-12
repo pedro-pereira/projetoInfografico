@@ -10,10 +10,9 @@ var telaPrincipal, menuCreditos, estrelas, cobertor, somRonco;
 var iconeComSom, iconeSemSom, tocaSom = 1;
 
 // Tela Apresentacao
-var engasgo, faltaConcentracao, ronco, sonoNaoRestaurador, animacao5, animacao6;
+var engasgo, faltaConcentracao, ronco, sonoNaoRestaurador, sonolencia, fadiga;
 var respiracaoApneia, respiracaoCorreta, legendaRespiracaoApneia, legendaRespiracaoCorreta;
 var telaAos, tituloAos, tituloSintomas, tituloConsequencia, textoAos, textoConsequencia1, textoConsequencia2, textoConsequencia3;
-var bordaBrilho;
 
 // Tela Tratamentos
 var telaTratamentos, tituloDiagnostico, textoDiagnostico, tituloTratamento;
@@ -26,7 +25,7 @@ var telaCpap, tituloCpap, tituloBeneficios, tituloExperimente;
 var textoCpap, textoBeneficios, textoInformacoes;
 var aparelhoCpap, botaoPlay, textoArrasteCpap;
 var mascaraAcoplada = false;
-var personagemRespirandoErrado, personagemRespirandoCerto;
+var personagemErradoCpap, personagemCertoCpap;
 
 // Tela Perguntas
 var telaPerguntas, tituloDuvidas, celular, perguntaClicavel, frameResposta, perguntaLabel, balaoPergunta, balaoResposta;
@@ -46,22 +45,25 @@ function preload (){
 	game.load.image('telaPrincipal'                      , 'imagens/tela-0.png');
 	game.load.image('telaCinza'                          , 'imagens/tela-cinza.png');
 	game.load.image('tituloPrincipal'                    , 'imagens/tituloPrincipal.png');
-	
+
+	game.load.atlasJSONHash('personagemPrincipal'        , 'imagens/sprite_personagem_principal.png'
+                                                         , 'imagens/sprite_personagem_principal.json');
+
 	game.load.image('telaCinzaVideo'                     , 'imagens/tela-cinza.png');
 
 	game.load.image('estrelas'                           , 'imagens/estrelas.png');
 	game.load.image('cobertor'                           , 'imagens/cobertor.png');
-	
+
 	game.load.image('iconeComSom'                        , 'imagens/icone-com-som.png');
 	game.load.image('iconeSemSom'                        , 'imagens/icone-sem-som.png');
-	
+
 	game.load.audio('somRonco'                           , 'sons/ronco-com-apito.wav');
 
 	game.load.image('grupoApresentacao'                  , 'imagens/ovelha-1.png');
 	game.load.image('grupoTratamentos'                   , 'imagens/ovelha-2.png');
 	game.load.image('grupoCpap'                          , 'imagens/ovelha-3.png');
 	game.load.image('grupoPerguntas'                     , 'imagens/ovelha-4.png');
-	
+
 	game.load.image('menuCreditos'                       , 'imagens/menu-creditos.png');
 
 	game.load.image('bgModal'                            , 'imagens/bg-modal.png');
@@ -73,10 +75,8 @@ function preload (){
 	game.load.atlasJSONHash('faltaConcentracao'          , 'imagens/falta-concentracao/falta-concentracao.png', 'imagens/falta-concentracao/falta-concentracao.json');
 	game.load.atlasJSONHash('ronco'                      , 'imagens/ronco/ronco.png', 'imagens/ronco/ronco.json');
 	game.load.atlasJSONHash('sonoNaoRestaurador'         , 'imagens/sono-nao-restaurador/sono-nao-restaurador.png', 'imagens/sono-nao-restaurador/sono-nao-restaurador.json');
-	game.load.atlasJSONHash('animacao5'                  , 'imagens/animacao-5/animacao-5.png', 'imagens/animacao-5/animacao-5.json');
-	game.load.atlasJSONHash('animacao6'                  , 'imagens/animacao-6/animacao-6.png', 'imagens/animacao-6/animacao-6.json');
-	
-	game.load.image('bordaBrilho'            , 'imagens/borda-brilho.png');
+	game.load.atlasJSONHash('sonolencia'                 , 'imagens/sonolencia/sonolencia.png', 'imagens/sonolencia/sonolencia.json');
+	game.load.atlasJSONHash('fadiga'                     , 'imagens/fadiga/fadiga.png', 'imagens/fadiga/fadiga.json');
 
 	game.load.atlasJSONHash('respiracaoApneia'           , 'imagens/sprite-respiracao-apneia.png'
                                                          , 'imagens/sprite-respiracao-apneia.json');
@@ -99,14 +99,14 @@ function preload (){
 	game.load.image('tituloDiagnostico'                  , 'imagens/tela-2-titulo-diagnostico.png');
 	game.load.image('tituloTratamentos'                  , 'imagens/tela-2-titulo-tratamentos.png');
 	game.load.image('textoDiagnostico'                   , 'imagens/tela-2-texto-diagnostico.png');
-	
+
 	game.load.image('iconeHigiene'                       , 'imagens/tela-2-icone-exercicios.png');
 	game.load.image('iconeRemedio'                       , 'imagens/tela-2-icone-remedio.png');
 	game.load.image('iconeFono'                          , 'imagens/tela-2-icone-fono.png');
 	game.load.image('iconeCirugia'                       , 'imagens/tela-2-icone-cirugia.png');
 	game.load.image('iconeIntraoral'                     , 'imagens/tela-2-icone-ortodontico.png');
 	game.load.image('iconeCpap'                          , 'imagens/tela-2-icone-cpap.png');
-	
+
 	game.load.image('textoHigiene'                       , 'imagens/tela-2-texto-exercicios.png');
 	game.load.image('textoRemedio'                       , 'imagens/tela-2-texto-remedio.png');
 	game.load.image('textoFono'                          , 'imagens/tela-2-texto-fono.png');
@@ -119,10 +119,10 @@ function preload (){
 	game.load.image('aparelhoCpap'                       , 'imagens/aparelhoCpap.png');
 	game.load.image('botaoPlay'                          , 'imagens/tela-3-botao-play.png');
 	game.load.image('textoArrasteCpap'                   , 'imagens/tela-3-texto-arraste.png');
-	game.load.atlasJSONHash('personagemRespirandoErrado' , 'imagens/sprite_personagem_respirando_errado.png'
-                                                         , 'imagens/sprite_personagem_respirando_errado.json');
-	game.load.atlasJSONHash('personagemRespirandoCerto'  , 'imagens/sprite_personagem_respirando_certo.png'
-                                                         , 'imagens/sprite_personagem_respirando_certo.json');
+	game.load.atlasJSONHash('personagemErradoCpap'       , 'imagens/tela-3-personagem-respirando-errado.png'
+                                                         , 'imagens/tela-3-personagem-respirando-errado.json');
+	game.load.atlasJSONHash('personagemCertoCpap'        , 'imagens/tela-3-personagem-respirando-certo.png'
+                                                         , 'imagens/tela-3-personagem-respirando-certo.json');
 
 	game.load.image('tituloCpap'                         , 'imagens/tela-3-titulo-cpap.png');
 	game.load.image('tituloBeneficios'                   , 'imagens/tela-3-titulo-beneficios.png');
@@ -140,7 +140,7 @@ function preload (){
 	game.load.image('perguntaLabel'                      , 'imagens/tela-4-pergunta-label.png');
 	game.load.image('balaoPergunta'                      , 'imagens/tela-4-balao-pergunta.png');
 	game.load.image('balaoResposta'                      , 'imagens/tela-4-balao-resposta.png');
-	
+
 	// Modal Créditos
 	game.load.image('botaoFecharCreditos'                , 'imagens/botaoFechar.png');
 	game.load.image('textoCreditos'                      , 'imagens/tela-creditos-texto.png');
@@ -154,41 +154,39 @@ function create (){
 	this.add.image(32, 32, "telaCinza");
 	telaPrincipal = this.add.image(32, 32, "telaPrincipal");
 
-	personagemPrincipal = this.add.sprite(354, 325, 'personagemRespirandoErrado');
-	personagemPrincipal.scale.x = 1.5;
-	personagemPrincipal.scale.y = 1.5;
+	personagemPrincipal = this.add.sprite(354, 325, 'personagemPrincipal');
 	personagemPrincipal.animations.add('run');
 	personagemPrincipal.animations.play('run', 15, true);
-	
+
 	menuCreditos = this.add.image(820, 550, "menuCreditos");
 	menuCreditos.inputEnabled = true;
 	menuCreditos.events.onInputDown.add(showModalCreditos, this);
-	
-	estrelas = this.add.image(110, 145, "estrelas");
+
+	estrelas = this.add.image(85, 172, "estrelas");
 	cobertor = this.add.image(320, 535, "cobertor");
-	
+
 	iconeComSom = this.add.image(940, 556, "iconeComSom");
 	iconeComSom.scale.x = 0.25;
 	iconeComSom.scale.y = 0.25;
 	iconeComSom.alpha = 1;
 	iconeComSom.inputEnabled = true;
-	
+
 	iconeSemSom = this.add.image(940, 556, "iconeSemSom");
 	iconeSemSom.scale.x = 0.25;
 	iconeSemSom.scale.y = 0.25;
 	iconeSemSom.alpha = 0;
 	iconeSemSom.inputEnabled = false;
-	
+
 	iconeComSom.events.onInputDown.add(function() {
 		tocaSom = tocaSom * -1;
 		controlaSom();
 	}, this);
-	
+
 	iconeSemSom.events.onInputDown.add(function() {
 		tocaSom = tocaSom * -1;
 		controlaSom();
 	}, this);
-	
+
 	somRonco = game.add.audio('somRonco');
 	somRonco.loopFull(0.6);
 	somRonco.play();
@@ -208,7 +206,7 @@ function create (){
 
 	iconeHigiene = reg.modal.getModalItem("modalTratamentos", 2);
 	iconeHigiene.inputEnabled = true;
-	iconeHigiene.events.onInputDown.add(function() {rearranjaIconesTratamentos(this);}, this);
+	iconeHigiene.events.onInputDown.add(function() {rearranjaIconesTratamentos('iconeHigiene');}, this);
 
 	iconeRemedio = reg.modal.getModalItem("modalTratamentos", 3);
 	iconeRemedio.inputEnabled = true;
@@ -243,24 +241,23 @@ function create (){
 	// Modal CPAP
 	//Aparelho e personagens original para retornar ao tamanho normal
 	aparelhoCpapOriginal = game.add.sprite(1000, 10000, 'aparelhoCpap');
-	personagemRespirandoErradoOriginal =  game.add.sprite(1000, 10000, 'personagemRespirandoErrado');
-	
-	personagemRespirandoErrado = reg.modal.getModalItem("modalCpap", 2);
-	personagemRespirandoErrado.x = 690;
-	personagemRespirandoErrado.y = 150;
-	personagemRespirandoErrado.animations.add('run');
-	personagemRespirandoErrado.animations.play('run', 15, true);
-	personagemRespirandoErrado.inputEnabled = true;
+	personagemErradoCpapOriginal =  game.add.sprite(1000, 10000, 'personagemErradoCpap');
 
-	personagemRespirandoCerto = reg.modal.getModalItem("modalCpap", 3);
-	personagemRespirandoCerto.animations.add('run');
-	personagemRespirandoCerto.animations.play('run', 15, true);
-	personagemRespirandoCerto.inputEnabled = true;
+	personagemErradoCpap = reg.modal.getModalItem("modalCpap", 2);
+	personagemErradoCpap.x = 690;
+	personagemErradoCpap.y = 150;
+	personagemErradoCpap.animations.add('run');
+	personagemErradoCpap.animations.play('run', 15, true);
+	personagemErradoCpap.inputEnabled = true;
+
+	personagemCertoCpap = reg.modal.getModalItem("modalCpap", 3);
+	personagemCertoCpap.animations.add('run');
+	personagemCertoCpap.animations.play('run', 15, true);
+	personagemCertoCpap.inputEnabled = true;
 
 	aparelhoCpap = reg.modal.getModalItem("modalCpap", 4);
 	aparelhoCpap.inputEnabled = true;
-	aparelhoCpap.input.enableDrag(true);
-	
+
 	botaoPlay = reg.modal.getModalItem("modalCpap", 5);
 	botaoPlay.inputEnabled = true;
 	botaoPlay.x = 800;
@@ -269,58 +266,48 @@ function create (){
 	textoArrasteCpap = reg.modal.getModalItem("modalCpap", 6);
 	textoArrasteCpap.alpha = 0;
 
-	aparelhoCpap.alpha = 0.1;
-	tween = game.add.tween(aparelhoCpap).to( { alpha: 1 }, 2000, "Linear", true, 2000);
-	tween.onComplete.add(function() {
-		textoArrasteCpap.alpha = 1;
-	}, this);
-
 	// ANIMACAO - Cria animacao com 5 frames
-	engasgo = reg.modal.getModalItem("modalApresentacao", 3);
+	engasgo = reg.modal.getModalItem("modalApresentacao", 2);
 	engasgo.animations.add('run');
 	engasgo.inputEnabled = true;
 
-	faltaConcentracao = reg.modal.getModalItem("modalApresentacao", 4);
+	faltaConcentracao = reg.modal.getModalItem("modalApresentacao", 3);
 	faltaConcentracao.animations.add('run');
 	faltaConcentracao.inputEnabled = true;
 
-	ronco = reg.modal.getModalItem("modalApresentacao", 5);
+	ronco = reg.modal.getModalItem("modalApresentacao", 4);
 	ronco.animations.add('run');
 	ronco.inputEnabled = true;
 
-	sonoNaoRestaurador	= reg.modal.getModalItem("modalApresentacao", 6);
+	sonoNaoRestaurador	= reg.modal.getModalItem("modalApresentacao", 5);
 	sonoNaoRestaurador.animations.add('run');
 	sonoNaoRestaurador.inputEnabled = true;
 
-	animacao5 = reg.modal.getModalItem("modalApresentacao", 7);
-	animacao5.animations.add('run');
-	animacao5.inputEnabled = true;
+	sonolencia = reg.modal.getModalItem("modalApresentacao", 6);
+	sonolencia.animations.add('run');
+	sonolencia.inputEnabled = true;
 
-	animacao6 = reg.modal.getModalItem("modalApresentacao", 8);
-	animacao6.animations.add('run');
-	animacao6.inputEnabled = true;
+	fadiga = reg.modal.getModalItem("modalApresentacao", 7);
+	fadiga.animations.add('run');
+	fadiga.inputEnabled = true;
 
-	respiracaoApneia = reg.modal.getModalItem("modalApresentacao", 9);
+	respiracaoApneia = reg.modal.getModalItem("modalApresentacao", 8);
 	respiracaoApneia.animations.add('run');
 	respiracaoApneia.animations.play('run', 6, true);
 
-	respiracaoCorreta = reg.modal.getModalItem("modalApresentacao", 10);
+	respiracaoCorreta = reg.modal.getModalItem("modalApresentacao", 9);
 	respiracaoCorreta.animations.add('run');
 	respiracaoCorreta.animations.play('run', 7, true);
 }
 
 function update () {
 
-	// Faz as ovelhas aumentarem de tamanho - Início
 	alteraEscalaImagem(grupoApresentacao, 1.3);
 	alteraEscalaImagem(grupoTratamentos, 1.3);
 	alteraEscalaImagem(grupoCpap, 1.3);
 	alteraEscalaImagem(grupoPerguntas, 1.3);
-	// Faz as ovelhas aumentarem de tamanho - Fim
 
-	// Faz o botão de player aumentar de tamanho - Início
 	alteraEscalaImagem(botaoPlay, 1.2);
-	// Faz o botão de player aumentar de tamanho - Fim
 
 	// Limitadores da tela para a máscara no Pop-Up
 	if(aparelhoCpap.x < 91 ) aparelhoCpap.x = 91;
@@ -329,14 +316,15 @@ function update () {
 	if(aparelhoCpap.y > 469) aparelhoCpap.y = 469;
 
 	// Condição de acoplação de máscara
-	if( aparelhoCpap.x < personagemRespirandoErrado.x + 50 && 
-		aparelhoCpap.x > personagemRespirandoErrado.x + 20 && 
-		aparelhoCpap.y < personagemRespirandoErrado.y + 50 && 
-		aparelhoCpap.y > personagemRespirandoErrado.y && 
+	if( aparelhoCpap.x < personagemErradoCpap.x + 50 && 
+		aparelhoCpap.x > personagemErradoCpap.x + 20 && 
+		aparelhoCpap.y < personagemErradoCpap.y + 50 && 
+		aparelhoCpap.y > personagemErradoCpap.y && 
 		!mascaraAcoplada)
 	{
 			mascaraAcoplada = true;
 			if(mascaraAcoplada) {
+				somRonco.stop();
 				aparecePersonagemDormindo();
 				desapareceCpap();
 			}
@@ -346,17 +334,15 @@ function update () {
 	animaIcones(faltaConcentracao, 2);
 	animaIcones(ronco, 2);
 	animaIcones(sonoNaoRestaurador, 2);
-	animaIcones(animacao5, 2);
-	animaIcones(animacao6, 2);
+	animaIcones(sonolencia, 2);
+	animaIcones(fadiga, 2);
 
-	// Faz as moedas aumentarem de tamanho - Início
-	alteraEscalaImagem(engasgo, 1.05);
-	alteraEscalaImagem(faltaConcentracao, 1.05);
-	alteraEscalaImagem(ronco, 1.05);
-	alteraEscalaImagem(sonoNaoRestaurador, 1.05);
-	alteraEscalaImagem(animacao5, 1.05);
-	alteraEscalaImagem(animacao6, 1.05);
-	// Faz as moedas aumentarem de tamanho - Fim
+	alteraEscalaImagem(engasgo, 1.2);
+	alteraEscalaImagem(faltaConcentracao, 1.2);
+	alteraEscalaImagem(ronco, 1.2);
+	alteraEscalaImagem(sonoNaoRestaurador, 1.2);
+	alteraEscalaImagem(sonolencia, 1.2);
+	alteraEscalaImagem(fadiga, 1.2);
 
 	/*
 	if (iconeHigiene.input.pointerOver()) {
@@ -435,11 +421,6 @@ function createModals() {
 				}
 			},
 			{
-				type: "image",
-				contentScale: 1,
-				content: "bordaBrilho"
-			},
-			{
 				type: "sprite",
 				contentScale: 1,
 				atlasParent: "engasgo"
@@ -462,12 +443,12 @@ function createModals() {
 			{
 				type: "sprite",
 				contentScale: 1,
-				atlasParent: "animacao5"
+				atlasParent: "sonolencia"
 			},
 			{
 				type: "sprite",
 				contentScale: 1,
-				atlasParent: "animacao6"
+				atlasParent: "fadiga"
 			},
 			{
 				type: "sprite",
@@ -694,14 +675,12 @@ function createModals() {
 			},
 			{
 				type: "sprite",
-				contentScale: 1.2,
-				atlasParent: "personagemRespirandoErrado"
+				atlasParent: "personagemErradoCpap"
 			},
 			{
 				type: "sprite",
 				offsetY: 2000,
-				contentScale: 1,
-				atlasParent: "personagemRespirandoCerto"
+				atlasParent: "personagemCertoCpap"
 			},
 			{
 				type: "sprite",
@@ -939,7 +918,6 @@ function createModals() {
 }
 
 function abreJanelaDeVideo() {
-	
 	telaCinzaVideo = game.add.image(35, 32, "telaCinzaVideo");
 	telaCinzaVideo.alpha = 0.5;
 	telaCinzaVideo.inputEnabled = true;
@@ -948,7 +926,7 @@ function abreJanelaDeVideo() {
 		telaCinzaVideo.inputEnabled = false;
 		telaCinzaVideo.alpha = 0;
 	}, this);
-	
+
 	var janelaVideo = document.createElement("iframe");
 		janelaVideo.src = "https://www.youtube.com/embed/b61ZX2IgOww";
 		janelaVideo.width = 640;
@@ -962,49 +940,50 @@ function abreJanelaDeVideo() {
 function showModalApresentacao(){
 	//Chama-se o tamanho da tela para basear os calculos e depois aplica na função limites
 	telaApresentacao = reg.modal.getModalItem("modalApresentacao", 0);
-	limites("modalApresentacao", 13, 14, 15, 16, telaApresentacao, 0);
+	limites("modalApresentacao", 12, 13, 14, 15, telaApresentacao, 0);
 	desabilitaTodasOvelhas();
+	somRonco.stop();
 	telaPrincipal.alpha = 0.7;
 	
 	telaAos   = reg.modal.getModalItem("modalApresentacao", 0);
 	telaAos.y = 80;
 
-	tituloAos   = reg.modal.getModalItem("modalApresentacao", 17);
+	tituloAos   = reg.modal.getModalItem("modalApresentacao", 16);
 	tituloAos.x = 120;
 	tituloAos.y = 100;
 
-	tituloSintomas   = reg.modal.getModalItem("modalApresentacao", 18);
+	tituloSintomas   = reg.modal.getModalItem("modalApresentacao", 17);
 	tituloSintomas.x = 380;
 	tituloSintomas.y = 100;
 
-	tituloConsequencia   = reg.modal.getModalItem("modalApresentacao", 19);
+	tituloConsequencia   = reg.modal.getModalItem("modalApresentacao", 18);
 	tituloConsequencia.x = 680;
 	tituloConsequencia.y = 100;
 
-	textoAos   = reg.modal.getModalItem("modalApresentacao", 20);
+	textoAos   = reg.modal.getModalItem("modalApresentacao", 19);
 	textoAos.x = 120;
 	textoAos.y = 150;
 
-	textoConsequencia1   = reg.modal.getModalItem("modalApresentacao", 21);
+	textoConsequencia1   = reg.modal.getModalItem("modalApresentacao", 20);
 	textoConsequencia1.x = 680;
 	textoConsequencia1.y = 150;
 
-	textoConsequencia2   = reg.modal.getModalItem("modalApresentacao", 22);
+	textoConsequencia2   = reg.modal.getModalItem("modalApresentacao", 21);
 	textoConsequencia2.x = 680;
 	textoConsequencia2.y = 300;
 
-	textoConsequencia3   = reg.modal.getModalItem("modalApresentacao", 23);
+	textoConsequencia3   = reg.modal.getModalItem("modalApresentacao", 22);
 	textoConsequencia3.x = 680;
 	textoConsequencia3.y = 390;
 	
-	legendaRespiracaoApneia   = reg.modal.getModalItem("modalApresentacao", 11);
+	legendaRespiracaoApneia   = reg.modal.getModalItem("modalApresentacao", 10);
 	legendaRespiracaoApneia.x = 120;
 	legendaRespiracaoApneia.y = 260;
 	
 	respiracaoApneia.x = 120;
 	respiracaoApneia.y = 266;
 	
-	legendaRespiracaoCorreta   = reg.modal.getModalItem("modalApresentacao", 12);
+	legendaRespiracaoCorreta   = reg.modal.getModalItem("modalApresentacao", 11);
 	legendaRespiracaoCorreta.x = 120;
 	legendaRespiracaoCorreta.y = 400;
 	
@@ -1023,15 +1002,11 @@ function showModalApresentacao(){
 	sonoNaoRestaurador.x = 510;
 	sonoNaoRestaurador.y = 280;
 	
-	animacao5.x = 385;
-	animacao5.y = 410;
+	sonolencia.x = 385;
+	sonolencia.y = 410;
 	
-	animacao6.x = 510;
-	animacao6.y = 410;
-	
-	bordaBrilho   = reg.modal.getModalItem("modalApresentacao", 2);
-	bordaBrilho.x = 378;
-	bordaBrilho.y = 143;
+	fadiga.x = 510;
+	fadiga.y = 410;
 
 	reg.modal.showModal("modalApresentacao");
 }
@@ -1047,6 +1022,7 @@ function showModalTratamentos(){
 	telaTratamentos = reg.modal.getModalItem("modalTratamentos", 0);
 	limites("modalTratamentos", 17, 18, 19, 20, telaTratamentos, 10);
 	desabilitaTodasOvelhas();
+	somRonco.stop();
 	telaPrincipal.alpha = 0.7;
 	
 	reiniciaIconesTratamentos();
@@ -1113,8 +1089,9 @@ function showModalCpap(){
 	telaCpap = reg.modal.getModalItem("modalCpap", 0);
 	limites("modalCpap", 7, 8, 9, 10, telaCpap, 0);
 	desabilitaTodasOvelhas();
+	somRonco.stop();
 	telaPrincipal.alpha = 0.7;
-	
+
 	telaCpap.y = 80;
 
 	tituloCpap = reg.modal.getModalItem("modalCpap", 11);
@@ -1140,9 +1117,12 @@ function showModalCpap(){
 	textoInformacoes = reg.modal.getModalItem("modalCpap", 16);
 	textoInformacoes.x = 730;
 	textoInformacoes.y = 440;
-	
-	console.log(personagemRespirandoCerto);
-	console.log(personagemRespirandoErrado);
+
+	aparelhoCpap.alpha = 0.1;
+	tween = game.add.tween(aparelhoCpap).to( { alpha: 1 }, 2000, "Linear", true, 2000);
+	tween.onComplete.add(function() {
+		textoArrasteCpap.alpha = 1;
+	}, this);
 
 	reg.modal.showModal("modalCpap");
 }
@@ -1196,6 +1176,7 @@ function showModalPerguntas(){
 	telaPerguntas = reg.modal.getModalItem("modalPerguntas", 0);
 	limites("modalPerguntas", 9, 10, 11, 12, telaPerguntas, 10);
 	desabilitaTodasOvelhas();
+	somRonco.stop();
 	telaPrincipal.alpha = 0.7;
 
 	telaPerguntas.y = 80;
@@ -1268,11 +1249,11 @@ function hideModalCreditos(){
 
 // Função que faz personagem aparece
 function aparecePersonagemDormindo(){
-	personagemRespirandoCerto.scale.x = 1.6;
-	personagemRespirandoCerto.scale.y = 1.6;
+	personagemCertoCpap.scale.x = 1.6;
+	personagemCertoCpap.scale.y = 1.6;
 
-	personagemRespirandoCerto.x = 562;
-	personagemRespirandoCerto.y = 116;
+	personagemCertoCpap.x = 562;
+	personagemCertoCpap.y = 116;
 }
 
 // Função que faz com que o personagem acordado desapareça junto com a máscara
@@ -1282,8 +1263,8 @@ function desapareceCpap(){
 
 	textoArrasteCpap.alpha = 0;
 
-	personagemRespirandoErrado.width = 0;
-	personagemRespirandoErrado.height = 0;
+	personagemErradoCpap.width = 0;
+	personagemErradoCpap.height = 0;
 }
 
 function apareceCpap() {
@@ -1298,18 +1279,15 @@ function apareceCpap() {
 		textoArrasteCpap.alpha = 1;
 	}, this);
 
-	personagemRespirandoErrado.width = personagemRespirandoErradoOriginal.width;
-	personagemRespirandoErrado.height = personagemRespirandoErradoOriginal.height;
-	personagemRespirandoErrado.scale.x = 1.2;
-	personagemRespirandoErrado.scale.y = 1.2;
+	personagemErradoCpap.width = personagemErradoCpapOriginal.width;
+	personagemErradoCpap.height = personagemErradoCpapOriginal.height;
 }
 
 function desaparecePersonagem(){
-	personagemRespirandoCerto.y = 10000;
+	personagemCertoCpap.y = 10000;
 }
 
 function desabilitaTodasOvelhas() {
-	somRonco.stop();
 	grupoApresentacao.inputEnabled = false;
 	grupoTratamentos.inputEnabled  = false;
 	grupoCpap.inputEnabled         = false;
@@ -1365,67 +1343,106 @@ function rearranjaIconesTratamentos(iconeClicado) {
 	textoFono.alpha = 0;
 	textoCirugia.alpha = 0;
 	textoIntraoral.alpha = 0;
-	textoCpap.alpha = 0;
-alert('oi2');
-	console.log(iconeClicado);
-	if(Object.is(iconeClicado, iconeHigiene)) {
-		alert('oi');
-		tween = game.add.tween(textoHigiene).to( { alpha: 1 }, 2000, "Linear", true, 2000);
+	textoCpapTrat.alpha = 0;
+
+	if(iconeClicado == 'iconeHigiene') {
+		tween = game.add.tween(textoHigiene).to( { alpha: 1 }, 1000, "Linear", true, 2000);
+		iconeHigiene.alpha   = 1;
+		iconeRemedio.alpha   = 0.5;
+		iconeFono.alpha      = 0.5;
+		iconeCirugia.alpha   = 0.5;
+		iconeIntraoral.alpha = 0.5;
+		iconeCpap.alpha      = 0.5;
 	}
 	
-	if(iconeClicado === 'iconeRemedio')
-		tween = game.add.tween(textoRemedio).to( { alpha: 1 }, 2000, "Linear", true, 2000);
+	if(iconeClicado === 'iconeRemedio') {
+		tween = game.add.tween(textoRemedio).to( { alpha: 1 }, 1000, "Linear", true, 2000);
+		iconeHigiene.alpha   = 0.5;
+		iconeRemedio.alpha   = 1;
+		iconeFono.alpha      = 0.5;
+		iconeCirugia.alpha   = 0.5;
+		iconeIntraoral.alpha = 0.5;
+		iconeCpap.alpha      = 0.5;
+	}
 	
-	if(iconeClicado === 'iconeFono')
-		tween = game.add.tween(textoFono).to( { alpha: 1 }, 2000, "Linear", true, 2000);
+	if(iconeClicado === 'iconeFono') {
+		tween = game.add.tween(textoFono).to( { alpha: 1 }, 1000, "Linear", true, 2000);
+		iconeHigiene.alpha   = 0.5;
+		iconeRemedio.alpha   = 0.5;
+		iconeFono.alpha      = 1;
+		iconeCirugia.alpha   = 0.5;
+		iconeIntraoral.alpha = 0.5;
+		iconeCpap.alpha      = 0.5;
+	}
 	
-	if(iconeClicado === 'iconeCirugia')
-		tween = game.add.tween(textoCirugia).to( { alpha: 1 }, 2000, "Linear", true, 2000);
+	if(iconeClicado === 'iconeCirugia') {
+		tween = game.add.tween(textoCirugia).to( { alpha: 1 }, 1000, "Linear", true, 2000);
+		iconeHigiene.alpha   = 0.5;
+		iconeRemedio.alpha   = 0.5;
+		iconeFono.alpha      = 0.5;
+		iconeCirugia.alpha   = 1;
+		iconeIntraoral.alpha = 0.5;
+		iconeCpap.alpha      = 0.5;
+	}
 	
-	if(iconeClicado === 'iconeIntraoral')
-		tween = game.add.tween(textoIntraoral).to( { alpha: 1 }, 2000, "Linear", true, 2000);
+	if(iconeClicado === 'iconeIntraoral') {
+		tween = game.add.tween(textoIntraoral).to( { alpha: 1 }, 1000, "Linear", true, 2000);
+		iconeHigiene.alpha   = 0.5;
+		iconeRemedio.alpha   = 0.5;
+		iconeFono.alpha      = 0.5;
+		iconeCirugia.alpha   = 0.5;
+		iconeIntraoral.alpha = 1;
+		iconeCpap.alpha      = 0.5;
+	}
 	
-	if(iconeClicado === 'iconeCpap')
-		tween = game.add.tween(textoCpap).to( { alpha: 1 }, 2000, "Linear", true, 2000);
+	if(iconeClicado === 'iconeCpap') {
+		tween = game.add.tween(textoCpapTrat).to( { alpha: 1 }, 1000, "Linear", true, 2000);
+		iconeHigiene.alpha   = 0.5;
+		iconeRemedio.alpha   = 0.5;
+		iconeFono.alpha      = 0.5;
+		iconeCirugia.alpha   = 0.5;
+		iconeIntraoral.alpha = 0.5;
+		iconeCpap.alpha      = 1;
+	}
 }
 
 function reiniciaIconesTratamentos() {
 	iconeHigiene.x = 520;
-	iconeHigiene.y = 150
-
-	iconeFono.x = 640;
-	iconeFono.y = 150;
-	
-	iconeRemedio.x = 800;
-	iconeRemedio.y = 150;
-
-	iconeCirugia.x = 520;
-	iconeCirugia.y = 370
-
-	iconeIntraoral.x = 650;
-	iconeIntraoral.y = 370;
-
-	iconeCpap.x = 800;
-	iconeCpap.y = 370;
-
+	iconeHigiene.y = 150;
+	iconeHigiene.alpha = 1;
 	iconeHigiene.scale.x = 0.25;
 	iconeHigiene.scale.y = 0.25;
 
-	iconeRemedio.scale.x = 0.25;
-	iconeRemedio.scale.y = 0.25;
-
+	iconeFono.x = 640;
+	iconeFono.y = 150;
+	iconeFono.alpha = 1;
 	iconeFono.scale.x = 0.25;
 	iconeFono.scale.y = 0.25;
 
+	iconeRemedio.x = 800;
+	iconeRemedio.y = 150;
+	iconeRemedio.alpha = 1;
+	iconeRemedio.scale.x = 0.25;
+	iconeRemedio.scale.y = 0.25;
+
+	iconeCirugia.x = 520;
+	iconeCirugia.y = 370;
+	iconeCirugia.alpha = 1;
 	iconeCirugia.scale.x = 0.25;
 	iconeCirugia.scale.y = 0.25;
 
+	iconeIntraoral.x = 650;
+	iconeIntraoral.y = 370;
+	iconeIntraoral.alpha = 1;
 	iconeIntraoral.scale.x = 0.25;
 	iconeIntraoral.scale.y = 0.25;
 
+	iconeCpap.x = 800;
+	iconeCpap.y = 370;
+	iconeCpap.alpha = 1;
 	iconeCpap.scale.x = 0.25;
 	iconeCpap.scale.y = 0.25;
-
+	
 	primeiroCliqueTratamentos = true;
 }
 
