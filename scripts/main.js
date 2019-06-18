@@ -193,20 +193,20 @@ function create (){
 	personagemPrincipal.animations.add('run');
 	personagemPrincipal.animations.play('run', 15, true);
 
-	menuCreditos = this.add.image(820, 550, "menuCreditos");
+	menuCreditos = this.add.image(820, 520, "menuCreditos");
 	menuCreditos.inputEnabled = true;
 	menuCreditos.events.onInputDown.add(showModalCreditos, this);
 
 	estrelas = this.add.image(85, 172, "estrelas");
 	cobertor = this.add.image(320, 535, "cobertor");
 
-	iconeComSom = this.add.image(940, 556, "iconeComSom");
+	iconeComSom = this.add.image(115, 526, "iconeComSom");
 	iconeComSom.scale.x = 0.25;
 	iconeComSom.scale.y = 0.25;
 	iconeComSom.alpha = 1;
 	iconeComSom.inputEnabled = true;
 
-	iconeSemSom = this.add.image(940, 556, "iconeSemSom");
+	iconeSemSom = this.add.image(115, 526, "iconeSemSom");
 	iconeSemSom.scale.x = 0.25;
 	iconeSemSom.scale.y = 0.25;
 	iconeSemSom.alpha = 0;
@@ -702,8 +702,8 @@ function createModals() {
 			{
 				type : "image",
 				content: "textoArrasteCpap",
-				offsetY: 190,
-				offsetX: -285
+				offsetY: 200,
+				offsetX: -290
 			},
 			{
 				type: "image",
@@ -922,7 +922,10 @@ function createModals() {
 			},
 			{
 				type: "image",
-				content: "pergunta6Balao2"
+				content: "pergunta6Balao2",
+				callback : function(){
+					window.open("https://www.youtube.com/embed/b61ZX2IgOww");
+				}
 			}
 		]
 	});
@@ -1035,11 +1038,11 @@ function showModalApresentacao(){
 
 	textoConsequencia2   = reg.modal.getModalItem("modalApresentacao", 21);
 	textoConsequencia2.x = 680;
-	textoConsequencia2.y = 300;
+	textoConsequencia2.y = 280;
 
 	textoConsequencia3   = reg.modal.getModalItem("modalApresentacao", 22);
 	textoConsequencia3.x = 680;
-	textoConsequencia3.y = 390;
+	textoConsequencia3.y = 355;
 
 	legendaRespiracaoApneia   = reg.modal.getModalItem("modalApresentacao", 10);
 	legendaRespiracaoApneia.x = 120;
@@ -1185,7 +1188,7 @@ function showModalCpap(){
 	textoBeneficios.y = 150;
 
 	textoInformacoes = reg.modal.getModalItem("modalCpap", 16);
-	textoInformacoes.x = 730;
+	textoInformacoes.x = 735;
 	textoInformacoes.y = 440;
 
 	aparelhoCpap.alpha = 0.1;
@@ -1253,22 +1256,22 @@ function mostraFrameDeRespostas(perguntaClicada) {
 		reiniciaBaloesDeDuvidas();
 		tween.onComplete.add(function() {
 			tween = game.add.tween(pergunta1Balao1);
-			tween.to( { alpha: 1 }, 2000, "Linear", true);
+			tween.to( { alpha: 1 }, 900, "Linear", true);
 			tween.start();
 
 			tween.onComplete.add(function() {
 				tween = game.add.tween(pergunta1Balao2);
-				tween.to( { alpha: 1 }, 2000, "Linear", true);
+				tween.to( { alpha: 1 }, 900, "Linear", true);
 				tween.start();
 
 				tween.onComplete.add(function() {
 					tween = game.add.tween(pergunta1Balao3);
-					tween.to( { alpha: 1 }, 2000, "Linear", true);
+					tween.to( { alpha: 1 }, 900, "Linear", true);
 					tween.start();
 
 					tween.onComplete.add(function() {
 						tween = game.add.tween(pergunta1Balao4);
-							tween.to( { alpha: 1 }, 2000, "Linear", true);
+							tween.to( { alpha: 1 }, 900, "Linear", true);
 							tween.start();
 					}, this);
 				}, this);
@@ -1287,17 +1290,17 @@ function mostraFrameDeRespostas(perguntaClicada) {
 		reiniciaBaloesDeDuvidas();
 		tween.onComplete.add(function() {
 			tween = game.add.tween(pergunta2Balao1);
-			tween.to( { alpha: 1 }, 2000, "Linear", true);
+			tween.to( { alpha: 1 }, 900, "Linear", true);
 			tween.start();
 
 			tween.onComplete.add(function() {
 				tween = game.add.tween(pergunta2Balao2);
-				tween.to( { alpha: 1 }, 2000, "Linear", true);
+				tween.to( { alpha: 1 }, 900, "Linear", true);
 				tween.start();
 
 				tween.onComplete.add(function() {
 					tween = game.add.tween(pergunta2Balao3);
-					tween.to( { alpha: 1 }, 2000, "Linear", true);
+					tween.to( { alpha: 1 }, 900, "Linear", true);
 					tween.start();
 				}, this);
 			}, this);
@@ -1315,17 +1318,17 @@ function mostraFrameDeRespostas(perguntaClicada) {
 		reiniciaBaloesDeDuvidas();
 		tween.onComplete.add(function() {
 			tween = game.add.tween(pergunta3Balao1);
-			tween.to( { alpha: 1 }, 2000, "Linear", true);
+			tween.to( { alpha: 1 }, 900, "Linear", true);
 			tween.start();
 
 			tween.onComplete.add(function() {
 				tween = game.add.tween(pergunta3Balao2);
-				tween.to( { alpha: 1 }, 2000, "Linear", true);
+				tween.to( { alpha: 1 }, 900, "Linear", true);
 				tween.start();
 
 				tween.onComplete.add(function() {
 					tween = game.add.tween(pergunta3Balao3);
-					tween.to( { alpha: 1 }, 2000, "Linear", true);
+					tween.to( { alpha: 1 }, 900, "Linear", true);
 					tween.start();
 				}, this);
 			}, this);
@@ -1342,17 +1345,17 @@ function mostraFrameDeRespostas(perguntaClicada) {
 		reiniciaBaloesDeDuvidas();
 		tween.onComplete.add(function() {
 			tween = game.add.tween(pergunta4Balao1);
-			tween.to( { alpha: 1 }, 2000, "Linear", true);
+			tween.to( { alpha: 1 }, 900, "Linear", true);
 			tween.start();
 
 			tween.onComplete.add(function() {
 				tween = game.add.tween(pergunta4Balao2);
-				tween.to( { alpha: 1 }, 2000, "Linear", true);
+				tween.to( { alpha: 1 }, 900, "Linear", true);
 				tween.start();
 
 				tween.onComplete.add(function() {
 					tween = game.add.tween(pergunta4Balao3);
-					tween.to( { alpha: 1 }, 2000, "Linear", true);
+					tween.to( { alpha: 1 }, 900, "Linear", true);
 					tween.start();
 				}, this);
 			}, this);
@@ -1369,17 +1372,17 @@ function mostraFrameDeRespostas(perguntaClicada) {
 		reiniciaBaloesDeDuvidas();
 		tween.onComplete.add(function() {
 			tween = game.add.tween(pergunta5Balao1);
-			tween.to( { alpha: 1 }, 2000, "Linear", true);
+			tween.to( { alpha: 1 }, 900, "Linear", true);
 			tween.start();
 
 			tween.onComplete.add(function() {
 				tween = game.add.tween(pergunta5Balao2);
-				tween.to( { alpha: 1 }, 2000, "Linear", true);
+				tween.to( { alpha: 1 }, 900, "Linear", true);
 				tween.start();
 
 				tween.onComplete.add(function() {
 					tween = game.add.tween(pergunta5Balao3);
-					tween.to( { alpha: 1 }, 2000, "Linear", true);
+					tween.to( { alpha: 1 }, 900, "Linear", true);
 					tween.start();
 				}, this);
 			}, this);
@@ -1396,12 +1399,12 @@ function mostraFrameDeRespostas(perguntaClicada) {
 		reiniciaBaloesDeDuvidas();
 		tween.onComplete.add(function() {
 			tween = game.add.tween(pergunta6Balao1);
-			tween.to( { alpha: 1 }, 2000, "Linear", true);
+			tween.to( { alpha: 1 }, 900, "Linear", true);
 			tween.start();
 
 			tween.onComplete.add(function() {
 				tween = game.add.tween(pergunta6Balao2);
-				tween.to( { alpha: 1 }, 2000, "Linear", true);
+				tween.to( { alpha: 1 }, 900, "Linear", true);
 				tween.start();
 			}, this);
 		}, this);
@@ -1415,7 +1418,7 @@ function mostraFrameDeRespostas(perguntaClicada) {
 	}
 }
 
-function reiniciaBaloesDeDuvidas() {
+function reiniciaBaloesDeDuvidas() {	
 	pergunta1Balao1.alpha = 0;
 	pergunta1Balao2.alpha = 0;
 	pergunta1Balao3.alpha = 0;
@@ -1482,12 +1485,12 @@ function showModalPerguntas(){
 
 	pergunta1Balao3 = reg.modal.getModalItem("modalPerguntas", 13);
 	pergunta1Balao3.x = 470;
-	pergunta1Balao3.y = 335;
+	pergunta1Balao3.y = 345;
 	pergunta1Balao3.alpha = 0;
 
 	pergunta1Balao4 = reg.modal.getModalItem("modalPerguntas", 14);
 	pergunta1Balao4.x = 470;
-	pergunta1Balao4.y = 400;
+	pergunta1Balao4.y = 420;
 	pergunta1Balao4.alpha = 0;
 
 	pergunta2 = reg.modal.getModalItem("modalPerguntas", 15);
@@ -1508,7 +1511,7 @@ function showModalPerguntas(){
 
 	pergunta2Balao3 = reg.modal.getModalItem("modalPerguntas", 18);
 	pergunta2Balao3.x = 470;
-	pergunta2Balao3.y = 347;
+	pergunta2Balao3.y = 367;
 	pergunta2Balao3.alpha = 0;
 
 	pergunta3 = reg.modal.getModalItem("modalPerguntas", 19);
@@ -1529,7 +1532,7 @@ function showModalPerguntas(){
 
 	pergunta3Balao3 = reg.modal.getModalItem("modalPerguntas", 22);
 	pergunta3Balao3.x = 470;
-	pergunta3Balao3.y = 360;
+	pergunta3Balao3.y = 370;
 	pergunta3Balao3.alpha = 0;
 
 	pergunta4 = reg.modal.getModalItem("modalPerguntas", 23);
@@ -1550,7 +1553,7 @@ function showModalPerguntas(){
 
 	pergunta4Balao3 = reg.modal.getModalItem("modalPerguntas", 26);
 	pergunta4Balao3.x = 470;
-	pergunta4Balao3.y = 360;
+	pergunta4Balao3.y = 370;
 	pergunta4Balao3.alpha = 0;
 
 	pergunta5 = reg.modal.getModalItem("modalPerguntas", 27);
@@ -1571,7 +1574,7 @@ function showModalPerguntas(){
 
 	pergunta5Balao3 = reg.modal.getModalItem("modalPerguntas", 30);
 	pergunta5Balao3.x = 470;
-	pergunta5Balao3.y = 350;
+	pergunta5Balao3.y = 360;
 	pergunta5Balao3.alpha = 0;
 
 	pergunta6 = reg.modal.getModalItem("modalPerguntas", 31);
@@ -1596,6 +1599,14 @@ function showModalPerguntas(){
 function hideModalPerguntas(){
 	habilitaTodasOvelhas();
 	telaPrincipal.alpha = 1;
+
+	pergunta1.alpha = 1;
+	pergunta2.alpha = 1;
+	pergunta3.alpha = 1;
+	pergunta4.alpha = 1;
+	pergunta5.alpha = 1;
+	pergunta6.alpha = 1;
+
 	reg.modal.hideModal("modalPerguntas");
 }
 
