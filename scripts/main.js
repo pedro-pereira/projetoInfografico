@@ -37,7 +37,9 @@ var pergunta3, pergunta3Balao1, pergunta3Balao2, pergunta3Balao3;
 var pergunta4, pergunta4Balao1, pergunta4Balao2, pergunta4Balao3;
 var pergunta5, pergunta5Balao1, pergunta5Balao2, pergunta5Balao3;
 var pergunta6, pergunta6Balao1, pergunta6Balao2;
-var primeiroCliqueDuvidas;
+var primeiroCliqueDuvidas = true;
+var fimPrimeiroCliqueDuvidas = false;
+var transicaoDuvidas = false;					   
 
 // Tela Creditos
 var telaCreditos, textoCreditos;
@@ -230,51 +232,71 @@ function create (){
 	createModals();
 
 	// GRUPO APRESENTACAO
-	grupoApresentacao = game.add.sprite(106, 340, 'grupoApresentacao');
+	// Modelo para voltar a local original depois de aplicar ancoragem
+	grupoApresentacaoModelo = game.add.sprite(106, 100000, 'grupoApresentacao');
+	grupoApresentacao = game.add.sprite(106, 340 + grupoApresentacaoModelo.height/2, 'grupoApresentacao');																																		   
 	grupoApresentacao.inputEnabled = true;
 	grupoApresentacao.events.onInputDown.add(showModalApresentacao, this);
-
+	alinhar(grupoApresentacao, 0, 0.5);
 	// GRUPO TRATAMENTOS
+	// Modelo para voltar a local original depois de aplicar ancoragem
+	grupoTratamentosModelo = game.add.sprite(106, 100000, 'grupoTratamentos');
 	grupoTratamentos = game.add.sprite(308, 150, 'grupoTratamentos');
 	grupoTratamentos.inputEnabled = true;
 	grupoTratamentos.events.onInputDown.add(showModalTratamentos, this);
+	alinhar(grupoTratamentos, 0, 0);	   
 
 	iconeHigiene = reg.modal.getModalItem("modalTratamentos", 2);
 	iconeHigiene.inputEnabled = true;
 	iconeHigiene.events.onInputDown.add(function() {rearranjaIconesTratamentos('iconeHigiene');}, this);
+	alinhar(iconeHigiene, 0.5, 0.5);
 
 	iconeRemedio = reg.modal.getModalItem("modalTratamentos", 3);
 	iconeRemedio.inputEnabled = true;
 	iconeRemedio.events.onInputDown.add(function() {rearranjaIconesTratamentos('iconeRemedio');}, this);
+	alinhar(iconeRemedio, 0.5, 0.5);					   
 
 	iconeFono = reg.modal.getModalItem("modalTratamentos", 4);
 	iconeFono.inputEnabled = true;
 	iconeFono.events.onInputDown.add(function() {rearranjaIconesTratamentos('iconeFono');}, this);
+	alinhar(iconeFono, 0.5, 0.5);					
 
 	iconeCirugia = reg.modal.getModalItem("modalTratamentos", 5);
 	iconeCirugia.inputEnabled = true;
 	iconeCirugia.events.onInputDown.add(function() {rearranjaIconesTratamentos('iconeCirugia');}, this);
+	alinhar(iconeCirugia, 0.5, 0.5);						   
 
 	iconeIntraoral = reg.modal.getModalItem("modalTratamentos", 6);
 	iconeIntraoral.inputEnabled = true;
 	iconeIntraoral.events.onInputDown.add(function() {rearranjaIconesTratamentos('iconeIntraoral');}, this);
+	alinhar(iconeIntraoral, 0.5, 0.5);							 
 
 	iconeCpap = reg.modal.getModalItem("modalTratamentos", 7);
 	iconeCpap.inputEnabled = true;
 	iconeCpap.events.onInputDown.add(function() {rearranjaIconesTratamentos('iconeCpap');}, this);
+	alinhar(iconeCpap, 0.5, 0.5);						
 
 	// GRUPO CPAP
-	grupoCpap = game.add.sprite(580, 150, 'grupoCpap');
+	// Modelo para voltar a local original depois de aplicar ancoragem
+	grupoCpapModelo = game.add.sprite(106, 100000, 'grupoCpap');
+	grupoCpap = game.add.sprite(580 + grupoCpapModelo.width, 150, 'grupoCpap');
 	grupoCpap.inputEnabled = true;
 	grupoCpap.events.onInputDown.add(showModalCpap, this);
+	alinhar(grupoCpap, 1, 0);
 
 	// GRUPO PERGUNTAS
-	grupoPerguntas = game.add.sprite(762, 340, 'grupoPerguntas');
+	// Modelo para voltar a local original depois de aplicar ancoragem
+	grupoPerguntaModelo = game.add.sprite(106, 100000, 'grupoPerguntas');
+	grupoPerguntas = game.add.sprite(762 + grupoPerguntaModelo.width, 340 + grupoPerguntaModelo.height/2, 'grupoPerguntas');
 	grupoPerguntas.inputEnabled = true;
 	grupoPerguntas.events.onInputDown.add(showModalPerguntas, this);
+	alinhar(grupoPerguntas, 1, 0.5);
+	frameResposta = game.add.sprite(106, 100000, 'frameResposta');
+	frameResposta.alpha = 0;
+	celular = game.add.sprite(106, 100000, 'celular');							   
 
 	// Modal CPAP
-	//Aparelho e personagens original para retornar ao tamanho normal
+	// Aparelho e personagens original para retornar ao tamanho normal
 	aparelhoCpapOriginal = game.add.sprite(1000, 10000, 'aparelhoCpap');
 	personagemErradoCpapOriginal =  game.add.sprite(1000, 10000, 'personagemErradoCpap');
 
@@ -339,7 +361,7 @@ function create (){
 function update () {
 
 	// Verificadores animação tela Tratamentos - Início
-	if(iconeCpap.x == 840 && iconeCpap.y == 250) {
+	if(iconeCpap.x == 860.5 && iconeCpap.y == 285.5) {
 		fimPrimeiroClique = true;
 	}
 
@@ -350,12 +372,44 @@ function update () {
 		   textoFono.alpha      > 0 && textoFono.alpha      < 1 || 
 		   textoIntraoral.alpha > 0 && textoIntraoral.alpha < 1 || 
 		   textoCpapTrat.alpha  > 0 && textoCpapTrat.alpha  < 1) {
-				transicao = true; //Enquanto estiver no Fade In dos textos
-		} else if(aparelhoCpap.x == 120 || iconeCpap.x == 840 && iconeCpap.y == 250) {//Fim da animação que move os icones
+				transicao = true; // Enquanto estiver no Fade In dos textos
+		} else if(iconeCpap.x == 860.5 && iconeCpap.y == 285.5) { // Fim da animação que move os icones
 			transicao = false;
 		}
 	}
 	//Verificadores animação tela Tratamentos - Fim
+
+	if (frameResposta.alpha > 0) {
+		fimPrimeiroCliqueDuvidas = true;
+	}
+
+	if(fimPrimeiroCliqueDuvidas){
+		if(pergunta1Balao1.alpha > 0 && pergunta1Balao1.alpha < 1 ||
+		   pergunta1Balao2.alpha > 0 && pergunta1Balao2.alpha < 1 ||
+		   pergunta1Balao3.alpha > 0 && pergunta1Balao3.alpha < 1 ||
+		   pergunta1Balao4.alpha > 0 && pergunta1Balao4.alpha < 1 ||
+		   pergunta2Balao1.alpha > 0 && pergunta2Balao1.alpha < 1 ||
+		   pergunta2Balao2.alpha > 0 && pergunta2Balao2.alpha < 1 ||
+		   pergunta2Balao3.alpha > 0 && pergunta2Balao3.alpha < 1 ||
+		   pergunta3Balao1.alpha > 0 && pergunta3Balao1.alpha < 1 ||
+		   pergunta3Balao2.alpha > 0 && pergunta3Balao2.alpha < 1 ||
+		   pergunta3Balao3.alpha > 0 && pergunta3Balao3.alpha < 1 ||
+		   pergunta4Balao1.alpha > 0 && pergunta4Balao1.alpha < 1 ||
+		   pergunta4Balao2.alpha > 0 && pergunta4Balao2.alpha < 1 ||
+		   pergunta4Balao3.alpha > 0 && pergunta4Balao3.alpha < 1 ||
+		   pergunta5Balao1.alpha > 0 && pergunta5Balao1.alpha < 1 ||
+		   pergunta5Balao2.alpha > 0 && pergunta5Balao2.alpha < 1 ||
+		   pergunta5Balao3.alpha > 0 && pergunta5Balao3.alpha < 1 ||
+		   pergunta6Balao1.alpha > 0 && pergunta6Balao1.alpha < 1 ||
+		   pergunta6Balao2.alpha > 0 && pergunta6Balao2.alpha < 1 || 
+		   !primeiroCliqueDuvidas && celular.x != 180 && frameResposta.alpha > 0){
+
+				transicaoDuvidas = true;
+		}else if (celular.x == 180) {
+			transicaoDuvidas=false;
+		}
+	}
+	//Verificadores animação tela Duvidas - Fim
 
 	alteraEscalaImagem(grupoApresentacao, 1.3);
 	alteraEscalaImagem(grupoTratamentos, 1.3);
@@ -398,6 +452,15 @@ function update () {
 	alteraEscalaImagem(sonoNaoRestaurador, 1.2);
 	alteraEscalaImagem(sonolencia, 1.2);
 	alteraEscalaImagem(fadiga, 1.2);
+
+	if (primeiroCliqueTratamentos) {
+		alteraEscalaImagem(iconeFono, 1.2);
+		alteraEscalaImagem(iconeCpap, 1.15);
+		alteraEscalaImagem(iconeIntraoral, 1.2);
+		alteraEscalaImagem(iconeCirugia, 1.2);
+		alteraEscalaImagem(iconeHigiene, 1.2);
+		alteraEscalaImagem(iconeRemedio, 1.2);
+	}
 }
 
 function controlaSom() {
@@ -702,8 +765,8 @@ function createModals() {
 			{
 				type : "image",
 				content: "textoArrasteCpap",
-				offsetY: 200,
-				offsetX: -290
+				offsetY: 190,
+				offsetX: -285
 			},
 			{
 				type: "image",
@@ -799,28 +862,36 @@ function createModals() {
 				type: "image",
 				content: "invi",
 				callback : function(){
-					hideModalPerguntas();
+					if(fimPrimeiroCliqueDuvidas && !transicaoDuvidas || primeiroCliqueDuvidas) {
+						hideModalPerguntas();
+				 	}
 				}
 			},
 			{
 				type: "image",
 				content: "invi",
 				callback : function(){
-					hideModalPerguntas();
+					if(fimPrimeiroCliqueDuvidas && !transicaoDuvidas || primeiroCliqueDuvidas) {
+						hideModalPerguntas();
+					}
 				}
 			},
 			{
 				type: "image",
 				content: "invi",
 				callback : function(){
-					hideModalPerguntas();
+					if(fimPrimeiroCliqueDuvidas && !transicaoDuvidas || primeiroCliqueDuvidas) {
+						hideModalPerguntas();
+					}
 				}
 			},
 			{
 				type: "image",
 				content: "invi",
 				callback : function(){
-					hideModalPerguntas();
+					if(fimPrimeiroCliqueDuvidas && !transicaoDuvidas || primeiroCliqueDuvidas) {
+						hideModalPerguntas();
+				 	}
 				}
 			},
 			{
@@ -924,7 +995,9 @@ function createModals() {
 				type: "image",
 				content: "pergunta6Balao2",
 				callback : function(){
-					window.open("https://www.youtube.com/embed/b61ZX2IgOww");
+					if (pergunta6Balao2.alpha == 1) {
+						window.open("https://www.youtube.com/embed/b61ZX2IgOww");
+					}
 				}
 			}
 		]
@@ -1058,23 +1131,29 @@ function showModalApresentacao(){
 	respiracaoCorreta.x = 115;
 	respiracaoCorreta.y = 400;
 
-	engasgo.x = 385;
-	engasgo.y = 150;
+	engasgo.x = 385 + engasgo.width/2;
+	engasgo.y = 150 + engasgo.height/2;
+	alinhar(engasgo, 0.5, 0.5);
 
-	faltaConcentracao.x = 510;
-	faltaConcentracao.y = 150;
+	faltaConcentracao.x = 510 + faltaConcentracao.width/2;
+	faltaConcentracao.y = 150 + faltaConcentracao.height/2;
+	alinhar(faltaConcentracao, 0.5, 0.5);
 
-	ronco.x = 385;
-	ronco.y = 280;
+	ronco.x = 385 + ronco.width/2;
+	ronco.y = 280 + ronco.height/2;
+	alinhar(ronco, 0.5, 0.5);
 
-	sonoNaoRestaurador.x = 510;
-	sonoNaoRestaurador.y = 280;
+	sonoNaoRestaurador.x = 510 + sonoNaoRestaurador.width/2;
+	sonoNaoRestaurador.y = 280 + sonoNaoRestaurador.height/2;
+	alinhar(sonoNaoRestaurador, 0.5, 0.5);
 
-	sonolencia.x = 385;
-	sonolencia.y = 410;
+	sonolencia.x = 385 + sonolencia.width/2;
+	sonolencia.y = 410 + sonolencia.height/2;
+	alinhar(sonolencia, 0.5, 0.5);
 
-	fadiga.x = 510;
-	fadiga.y = 410;
+	fadiga.x = 510 + fadiga.width/2;
+	fadiga.y = 410 + fadiga.height/2;
+	alinhar(fadiga, 0.5, 0.5);
 
 	reg.modal.showModal("modalApresentacao");
 }
@@ -1150,7 +1229,7 @@ function hideModalTratamentos(){
 	telaPrincipal.alpha = 1;
 	reg.modal.hideModal("modalTratamentos");
 
-	//No primeiro clique demorar a começar o fade in na tela tratamentos
+	// No primeiro clique demorar a começar o fade in na tela tratamentos
 	fimPrimeiroClique = false;
 	transicao = false;
 
@@ -1162,7 +1241,7 @@ function showModalCpap(){
 	telaCpap = reg.modal.getModalItem("modalCpap", 0);
 	limites("modalCpap", 7, 8, 9, 10, telaCpap, 10);
 	desabilitaTodasOvelhas();
-	somRonco.stop();
+
 	telaPrincipal.alpha = 0.7;
 
 	telaCpap.y = 80;
@@ -1192,7 +1271,7 @@ function showModalCpap(){
 	textoInformacoes.y = 440;
 
 	aparelhoCpap.alpha = 0.1;
-	tween = game.add.tween(aparelhoCpap).to( { alpha: 1 }, 2000, "Linear", true, 2000);
+	tween = game.add.tween(aparelhoCpap).to( { alpha: 1 }, 1000, "Linear", true, 100);
 	tween.onComplete.add(function() {
 		textoArrasteCpap.alpha = 1;
 	}, this);
@@ -1213,67 +1292,67 @@ function hideModalCpap(){
 }
 
 function mostraFrameDeRespostas(perguntaClicada) {
+	if(primeiroCliqueDuvidas) {
+		primeiroCliqueDuvidas = false;
 
-	tween = game.add.tween(celular);
-	tween.to({ x: [celular.x, celular.x, 180, 180], y: [celular.y, celular.y, celular.y, celular.y] }, 2000, "Linear");
-	tween.start();
+		tween = game.add.tween(celular);
+		tween.to({ x: [celular.x, celular.x, 180, 180], y: [celular.y, celular.y, celular.y, celular.y] }, 1000, "Linear");
+		tween.start();
 
-	tween = game.add.tween(pergunta1);
-	tween.to({ x: [pergunta1.x, pergunta1.x, 191, 191], y: [pergunta1.y, pergunta1.y, pergunta1.y, pergunta1.y] }, 2000, "Linear");
-	tween.start();
+		tween = game.add.tween(pergunta1);
+		tween.to({ x: [pergunta1.x, pergunta1.x, 191, 191], y: [pergunta1.y, pergunta1.y, pergunta1.y, pergunta1.y] }, 1000, "Linear");
+		tween.start();
 
-	tween = game.add.tween(pergunta2);
-	tween.to({ x: [pergunta2.x, pergunta2.x, 191, 191], y: [pergunta2.y, pergunta2.y, pergunta2.y, pergunta2.y] }, 2000, "Linear");
-	tween.start();
+		tween = game.add.tween(pergunta2);
+		tween.to({ x: [pergunta2.x, pergunta2.x, 191, 191], y: [pergunta2.y, pergunta2.y, pergunta2.y, pergunta2.y] }, 1000, "Linear");
+		tween.start();
 
-	tween = game.add.tween(pergunta3);
-	tween.to({ x: [pergunta3.x, pergunta3.x, 191, 191], y: [pergunta3.y, pergunta3.y, pergunta3.y, pergunta3.y] }, 2000, "Linear");
-	tween.start();
+		tween = game.add.tween(pergunta3);
+		tween.to({ x: [pergunta3.x, pergunta3.x, 191, 191], y: [pergunta3.y, pergunta3.y, pergunta3.y, pergunta3.y] }, 1000, "Linear");
+		tween.start();
 
-	tween = game.add.tween(pergunta4);
-	tween.to({ x: [pergunta4.x, pergunta4.x, 191, 191], y: [pergunta4.y, pergunta4.y, pergunta4.y, pergunta4.y] }, 2000, "Linear");
-	tween.start();
+		tween = game.add.tween(pergunta4);
+		tween.to({ x: [pergunta4.x, pergunta4.x, 191, 191], y: [pergunta4.y, pergunta4.y, pergunta4.y, pergunta4.y] }, 1000, "Linear");
+		tween.start();
 
-	tween = game.add.tween(pergunta5);
-	tween.to({ x: [pergunta5.x, pergunta5.x, 191, 191], y: [pergunta5.y, pergunta5.y, pergunta5.y, pergunta5.y] }, 2000, "Linear");
-	tween.start();
+		tween = game.add.tween(pergunta5);
+		tween.to({ x: [pergunta5.x, pergunta5.x, 191, 191], y: [pergunta5.y, pergunta5.y, pergunta5.y, pergunta5.y] }, 1000, "Linear");
+		tween.start();
 
-	tween = game.add.tween(pergunta6);
-	tween.to({ x: [pergunta6.x, pergunta6.x, 191, 191], y: [pergunta6.y, pergunta6.y, pergunta6.y, pergunta6.y] }, 2000, "Linear");
-	tween.start();
+		tween = game.add.tween(pergunta6);
+		tween.to({ x: [pergunta6.x, pergunta6.x, 191, 191], y: [pergunta6.y, pergunta6.y, pergunta6.y, pergunta6.y] }, 1000, "Linear");
+		tween.start();
 
-	tween.onComplete.add(function() {
 		tween = game.add.tween(frameResposta);
-		tween.to( { alpha: 1 }, 2000, "Linear", true);
+		tween.to( { alpha: 1 }, 3000, "Linear", true);
 		tween.start();
 
 		tween = game.add.tween(perguntaLabel);
-		tween.to( { alpha: 1 }, 2000, "Linear", true);
+		tween.to( { alpha: 1 }, 3000, "Linear", true);
 		tween.start();
-	}, this);
+	}
 
-	if(perguntaClicada === 'pergunta1') {
+	if(perguntaClicada === 'pergunta1' && !transicaoDuvidas) {
 		reiniciaBaloesDeDuvidas();
+
+		tween = game.add.tween(pergunta1Balao1);
+		tween.to( { alpha: 1 }, 1500, "Linear", 0);
+		tween.start();
+
 		tween.onComplete.add(function() {
-			tween = game.add.tween(pergunta1Balao1);
-			tween.to( { alpha: 1 }, 900, "Linear", true);
+			tween = game.add.tween(pergunta1Balao2);
+			tween.to( { alpha: 1 }, 1500, "Linear", 0);
 			tween.start();
 
 			tween.onComplete.add(function() {
-				tween = game.add.tween(pergunta1Balao2);
-				tween.to( { alpha: 1 }, 900, "Linear", true);
+				tween = game.add.tween(pergunta1Balao3);
+				tween.to( { alpha: 1 }, 1500, "Linear", 0);
 				tween.start();
 
 				tween.onComplete.add(function() {
-					tween = game.add.tween(pergunta1Balao3);
-					tween.to( { alpha: 1 }, 900, "Linear", true);
+					tween = game.add.tween(pergunta1Balao4);
+					tween.to( { alpha: 1 }, 1500, "Linear", 0);
 					tween.start();
-
-					tween.onComplete.add(function() {
-						tween = game.add.tween(pergunta1Balao4);
-							tween.to( { alpha: 1 }, 900, "Linear", true);
-							tween.start();
-					}, this);
 				}, this);
 			}, this);
 		}, this);
@@ -1284,27 +1363,25 @@ function mostraFrameDeRespostas(perguntaClicada) {
 		pergunta4.alpha = 0.5;
 		pergunta5.alpha = 0.5;
 		pergunta6.alpha = 0.5;
-	}
 
-	if(perguntaClicada === 'pergunta2') {
+	} else if(perguntaClicada === 'pergunta2' && !transicaoDuvidas) {
 		reiniciaBaloesDeDuvidas();
+
+		tween = game.add.tween(pergunta2Balao1);
+		tween.to( { alpha: 1 }, 1500, "Linear", 0);
+		tween.start();
+
 		tween.onComplete.add(function() {
-			tween = game.add.tween(pergunta2Balao1);
-			tween.to( { alpha: 1 }, 900, "Linear", true);
+			tween = game.add.tween(pergunta2Balao2);
+			tween.to( { alpha: 1 }, 1500, "Linear", 0);
 			tween.start();
 
 			tween.onComplete.add(function() {
-				tween = game.add.tween(pergunta2Balao2);
-				tween.to( { alpha: 1 }, 900, "Linear", true);
+				tween = game.add.tween(pergunta2Balao3);
+				tween.to( { alpha: 1 }, 1500, "Linear", 0);
 				tween.start();
-
-				tween.onComplete.add(function() {
-					tween = game.add.tween(pergunta2Balao3);
-					tween.to( { alpha: 1 }, 900, "Linear", true);
-					tween.start();
-				}, this);
 			}, this);
-		}, this);
+		}, this);   
 
 		pergunta1.alpha = 0.5;
 		pergunta2.alpha = 1;
@@ -1312,25 +1389,23 @@ function mostraFrameDeRespostas(perguntaClicada) {
 		pergunta4.alpha = 0.5;
 		pergunta5.alpha = 0.5;
 		pergunta6.alpha = 0.5;
-	}
 
-	if(perguntaClicada === 'pergunta3') {
+	} else if(perguntaClicada === 'pergunta3' && !transicaoDuvidas) {
 		reiniciaBaloesDeDuvidas();
+
+		tween = game.add.tween(pergunta3Balao1);
+		tween.to( { alpha: 1 }, 1500, "Linear", true);
+		tween.start();
+
 		tween.onComplete.add(function() {
-			tween = game.add.tween(pergunta3Balao1);
-			tween.to( { alpha: 1 }, 900, "Linear", true);
+			tween = game.add.tween(pergunta3Balao2);
+			tween.to( { alpha: 1 }, 1500, "Linear", true);
 			tween.start();
 
 			tween.onComplete.add(function() {
-				tween = game.add.tween(pergunta3Balao2);
-				tween.to( { alpha: 1 }, 900, "Linear", true);
+				tween = game.add.tween(pergunta3Balao3);
+				tween.to( { alpha: 1 }, 1500, "Linear", true);
 				tween.start();
-
-				tween.onComplete.add(function() {
-					tween = game.add.tween(pergunta3Balao3);
-					tween.to( { alpha: 1 }, 900, "Linear", true);
-					tween.start();
-				}, this);
 			}, this);
 		}, this);
 
@@ -1340,24 +1415,23 @@ function mostraFrameDeRespostas(perguntaClicada) {
 		pergunta4.alpha = 0.5;
 		pergunta5.alpha = 0.5;
 		pergunta6.alpha = 0.5;
-	}
-	if(perguntaClicada === 'pergunta4') {
+
+	} else if(perguntaClicada === 'pergunta4' && !transicaoDuvidas) {
 		reiniciaBaloesDeDuvidas();
+
+		tween = game.add.tween(pergunta4Balao1);
+		tween.to( { alpha: 1 }, 1500, "Linear", true);
+		tween.start();
+
 		tween.onComplete.add(function() {
-			tween = game.add.tween(pergunta4Balao1);
-			tween.to( { alpha: 1 }, 900, "Linear", true);
+			tween = game.add.tween(pergunta4Balao2);
+			tween.to( { alpha: 1 }, 1500, "Linear", true);
 			tween.start();
 
 			tween.onComplete.add(function() {
-				tween = game.add.tween(pergunta4Balao2);
-				tween.to( { alpha: 1 }, 900, "Linear", true);
+				tween = game.add.tween(pergunta4Balao3);
+				tween.to( { alpha: 1 }, 1500, "Linear", true);
 				tween.start();
-
-				tween.onComplete.add(function() {
-					tween = game.add.tween(pergunta4Balao3);
-					tween.to( { alpha: 1 }, 900, "Linear", true);
-					tween.start();
-				}, this);
 			}, this);
 		}, this);
 
@@ -1367,24 +1441,23 @@ function mostraFrameDeRespostas(perguntaClicada) {
 		pergunta4.alpha = 1;
 		pergunta5.alpha = 0.5;
 		pergunta6.alpha = 0.5;
-	}
-	if(perguntaClicada === 'pergunta5') {
+  
+	} else if(perguntaClicada === 'pergunta5' && !transicaoDuvidas) {
 		reiniciaBaloesDeDuvidas();
+
+		tween = game.add.tween(pergunta5Balao1);
+		tween.to( { alpha: 1 }, 1500, "Linear", true);
+		tween.start();
+
 		tween.onComplete.add(function() {
-			tween = game.add.tween(pergunta5Balao1);
-			tween.to( { alpha: 1 }, 900, "Linear", true);
+			tween = game.add.tween(pergunta5Balao2);
+			tween.to( { alpha: 1 }, 1500, "Linear", true);
 			tween.start();
 
 			tween.onComplete.add(function() {
-				tween = game.add.tween(pergunta5Balao2);
-				tween.to( { alpha: 1 }, 900, "Linear", true);
+				tween = game.add.tween(pergunta5Balao3);
+				tween.to( { alpha: 1 }, 1500, "Linear", true);
 				tween.start();
-
-				tween.onComplete.add(function() {
-					tween = game.add.tween(pergunta5Balao3);
-					tween.to( { alpha: 1 }, 900, "Linear", true);
-					tween.start();
-				}, this);
 			}, this);
 		}, this);
 
@@ -1394,19 +1467,18 @@ function mostraFrameDeRespostas(perguntaClicada) {
 		pergunta4.alpha = 0.5;
 		pergunta5.alpha = 1;
 		pergunta6.alpha = 0.5;
-	}
-	if(perguntaClicada === 'pergunta6') {
+  
+	} else if(perguntaClicada === 'pergunta6' && !transicaoDuvidas) {
 		reiniciaBaloesDeDuvidas();
-		tween.onComplete.add(function() {
-			tween = game.add.tween(pergunta6Balao1);
-			tween.to( { alpha: 1 }, 900, "Linear", true);
-			tween.start();
 
-			tween.onComplete.add(function() {
-				tween = game.add.tween(pergunta6Balao2);
-				tween.to( { alpha: 1 }, 900, "Linear", true);
-				tween.start();
-			}, this);
+		tween = game.add.tween(pergunta6Balao1);
+		tween.to( { alpha: 1 }, 1500, "Linear", true);
+		tween.start();
+
+		tween.onComplete.add(function() {
+			tween = game.add.tween(pergunta6Balao2);
+			tween.to( { alpha: 1 }, 1500, "Linear", true);
+			tween.start();
 		}, this);
 
 		pergunta1.alpha = 0.5;
@@ -1418,7 +1490,13 @@ function mostraFrameDeRespostas(perguntaClicada) {
 	}
 }
 
-function reiniciaBaloesDeDuvidas() {	
+function reiniciaBaloesDeDuvidas() {
+	pergunta1.alpha = 1;
+	pergunta2.alpha = 1;
+	pergunta3.alpha = 1;
+	pergunta4.alpha = 1;
+	pergunta5.alpha = 1;
+	pergunta6.alpha = 1;
 	pergunta1Balao1.alpha = 0;
 	pergunta1Balao2.alpha = 0;
 	pergunta1Balao3.alpha = 0;
@@ -1599,13 +1677,9 @@ function showModalPerguntas(){
 function hideModalPerguntas(){
 	habilitaTodasOvelhas();
 	telaPrincipal.alpha = 1;
-
-	pergunta1.alpha = 1;
-	pergunta2.alpha = 1;
-	pergunta3.alpha = 1;
-	pergunta4.alpha = 1;
-	pergunta5.alpha = 1;
-	pergunta6.alpha = 1;
+	primeiroCliqueDuvidas = true;
+	fimPrimeiroCliqueDuvidas = false;
+	reiniciaBaloesDeDuvidas();
 
 	reg.modal.hideModal("modalPerguntas");
 }
@@ -1620,7 +1694,7 @@ function showModalCreditos(){
 	telaCreditos.y = 80;
 
 	textoCreditos = reg.modal.getModalItem("modalCreditos", 2);
-	textoCreditos.x = 170;
+	textoCreditos.x = 280;
 	textoCreditos.y = 120;
 
 	reg.modal.showModal("modalCreditos");
@@ -1688,38 +1762,37 @@ function rearranjaIconesTratamentos(iconeClicado) {
 
 	if(primeiroCliqueTratamentos === true ) {
 		tweenHigiene = game.add.tween(iconeHigiene);
-		tweenHigiene.to({ x: [iconeHigiene.x, iconeHigiene.x, iconeHigiene.x, iconeHigiene.x], y: [150, 150, 150, 150] }, 3000, "Linear");
+		tweenHigiene.to({ x: [iconeHigiene.x, iconeHigiene.x, iconeHigiene.x, iconeHigiene.x], y: [120 + higieneY, 120 + higieneY, 120 + higieneY, 120 + higieneY] }, 3000, "Linear");
 		tweenHigiene.start();	
-		tweenHigiene = game.add.tween(iconeHigiene.scale).to( { x: 0.15, y: 0.15 }, 1000, Phaser.Easing.Elastic.Out, true);
+		tweenHigiene = game.add.tween(iconeHigiene.scale).to( { x: 0.60, y: 0.60 }, 1000, Phaser.Easing.Elastic.Out, true);
 
 		tweenFono = game.add.tween(iconeFono);
-		tweenFono.to({ x: [iconeFono.x, iconeFono.x, 670, 670], y: [150, 150, 150, 150] }, 3000, "Linear");
+		tweenFono.to({ x: [iconeFono.x, iconeFono.x, 650 + fonoX, 650 + fonoX], y: [120 + fonoY, 120 + fonoY, 120 + fonoY, 120 + fonoY] }, 3000, "Linear");
 		tweenFono.start();	
-		tweenFono = game.add.tween(iconeFono.scale).to( { x: 0.15, y: 0.15 }, 1000, Phaser.Easing.Elastic.Out, true);
+		tweenFono = game.add.tween(iconeFono.scale).to( { x: 0.60, y: 0.60 }, 1000, Phaser.Easing.Elastic.Out, true);
 
 		tweenRemedio = game.add.tween(iconeRemedio);
-		tweenRemedio.to({ x: [iconeRemedio.x, iconeRemedio.x, 840, 840], y: [150, 150, 150, 150] }, 3000, "Linear");
+		tweenRemedio.to({ x: [iconeRemedio.x, iconeRemedio.x, 800 + remedioX, 800 + remedioX], y: [120 + remedioY, 120 + remedioY, 120 + remedioY, 120 + remedioY] }, 3000, "Linear");
 		tweenRemedio.start();	
-		tweenRemedio = game.add.tween(iconeRemedio.scale).to( { x: 0.15, y: 0.15 }, 1000, Phaser.Easing.Elastic.Out, true);
+		tweenRemedio = game.add.tween(iconeRemedio.scale).to( { x: 0.60, y: 0.60 }, 1000, Phaser.Easing.Elastic.Out, true);
 
 		tweenCirurgia = game.add.tween(iconeCirugia);
-		tweenCirurgia.to({ x: [iconeCirugia.x, iconeCirugia.x, iconeCirugia.x, iconeCirugia.x], y: [iconeCirugia.y, iconeCirugia.y, 250, 250] }, 3000, "Linear");
+		tweenCirurgia.to({ x: [iconeCirugia.x, iconeCirugia.x, iconeCirugia.x, iconeCirugia.x], y: [iconeCirugia.y, iconeCirugia.y, 210 + cirurgiaY, 210 + cirurgiaY] }, 3000, "Linear");
 		tweenCirurgia.start();	
-		tweenCirurgia = game.add.tween(iconeCirugia.scale).to( { x: 0.15, y: 0.15 }, 1000, Phaser.Easing.Elastic.Out, true);
+		tweenCirurgia = game.add.tween(iconeCirugia.scale).to( { x: 0.60, y: 0.60 }, 1000, Phaser.Easing.Elastic.Out, true);
 
 		tweenIntraoral = game.add.tween(iconeIntraoral);
-		tweenIntraoral.to({ x: [iconeIntraoral.x, iconeIntraoral.x, 675, 675], y: [iconeIntraoral.y, iconeIntraoral.y, 250, 250] }, 3000, "Linear");
+		tweenIntraoral.to({ x: [iconeIntraoral.x, iconeIntraoral.x, 660 + intraOralX, 660 + intraOralX], y: [iconeIntraoral.y, iconeIntraoral.y, 210 + intraOralY, 210 + intraOralY] }, 3000, "Linear");
 		tweenIntraoral.start();	
-		tweenIntraoral = game.add.tween(iconeIntraoral.scale).to( { x: 0.15, y: 0.15 }, 1000, Phaser.Easing.Elastic.Out, true);
+		tweenIntraoral = game.add.tween(iconeIntraoral.scale).to( { x: 0.60, y: 0.60 }, 1000, Phaser.Easing.Elastic.Out, true);
 
 		tweenCpap = game.add.tween(iconeCpap);
-		tweenCpap.to({ x: [iconeCpap.x, iconeCpap.x, 840, 840], y: [iconeIntraoral.y, iconeIntraoral.y, 250, 250] }, 3000, "Linear");
+		tweenCpap.to({ x: [iconeCpap.x, iconeCpap.x, 800 + cpapX, 800 + cpapX], y: [iconeIntraoral.y, iconeIntraoral.y, 210 + cpapY, 210 + cpapY] }, 3000, "Linear");
 		tweenCpap.start();	
-		tweenCpap = game.add.tween(iconeCpap.scale).to( { x: 0.15, y: 0.15 }, 1000, Phaser.Easing.Elastic.Out, true);
+		tweenCpap = game.add.tween(iconeCpap.scale).to( { x: 0.60, y: 0.60 }, 1000, Phaser.Easing.Elastic.Out, true);
 
 		primeiroCliqueTratamentos = false;
 	}
-
 	if(iconeClicado === 'iconeHigiene' && transicao == false && textoHigiene.alpha != 1) {
 
 		if(fimPrimeiroClique){
@@ -1806,12 +1879,12 @@ function rearranjaIconesTratamentos(iconeClicado) {
 		iconeCpap.alpha      = 1;
 
 	} else if(transicao == false && fimPrimeiroClique) {
-		iconeHigiene.alpha = 1;
-		iconeRemedio.alpha = 1;
-		iconeFono.alpha = 1;
-		iconeCirugia.alpha = 1;
+		iconeHigiene.alpha   = 1;
+		iconeRemedio.alpha   = 1;
+		iconeFono.alpha      = 1;
+		iconeCirugia.alpha   = 1;
 		iconeIntraoral.alpha = 1;
-		iconeCpap.alpha = 1;
+		iconeCpap.alpha      = 1;
 	}
 
 	textoHigiene.alpha   = 0;
@@ -1832,41 +1905,54 @@ function reiniciaIconesTratamentos() {
 		tweenIntraoral.kill;
 	}
 
-	iconeHigiene.x = 520;
-	iconeHigiene.y = 150;
+	// iconeX e iconeY são variáveis que corrigem a localização por conta da ancorage
+	higieneX = iconeHigiene.width/2;
+	higieneY = iconeHigiene.height/2;
+	iconeHigiene.x = 520 + higieneX;
+	iconeHigiene.y = 150 + higieneY;
 	iconeHigiene.alpha = 1;
-	iconeHigiene.scale.x = 0.25;
-	iconeHigiene.scale.y = 0.25;
+	iconeHigiene.scale.x = 1;
+	iconeHigiene.scale.y = 1;
 
-	iconeFono.x = 640;
-	iconeFono.y = 150;
+	fonoX = iconeFono.width/2;
+	fonoY = iconeFono.height/2;
+	iconeFono.x = 650 + fonoX;
+	iconeFono.y = 150 + fonoY;
 	iconeFono.alpha = 1;
-	iconeFono.scale.x = 0.25;
-	iconeFono.scale.y = 0.25;
+	iconeFono.scale.x = 1;
+	iconeFono.scale.y = 1;
 
-	iconeRemedio.x = 800;
-	iconeRemedio.y = 150;
+	remedioX = iconeRemedio.width/2;
+	remedioY = iconeRemedio.height/2;
+	iconeRemedio.x = 800 + remedioX;
+	iconeRemedio.y = 150 + remedioY;
 	iconeRemedio.alpha = 1;
-	iconeRemedio.scale.x = 0.25;
-	iconeRemedio.scale.y = 0.25;
+	iconeRemedio.scale.x = 1;
+	iconeRemedio.scale.y = 1;
 
-	iconeCirugia.x = 520;
-	iconeCirugia.y = 370;
+	cirurgiaX = iconeCirugia.width/2;
+	cirurgiaY = iconeCirugia.height/2;
+	iconeCirugia.x = 520 + cirurgiaX;
+	iconeCirugia.y = 360 + cirurgiaY;
 	iconeCirugia.alpha = 1;
-	iconeCirugia.scale.x = 0.25;
-	iconeCirugia.scale.y = 0.25;
+	iconeCirugia.scale.x = 1;
+	iconeCirugia.scale.y = 1;
 
-	iconeIntraoral.x = 650;
-	iconeIntraoral.y = 370;
+	intraOralX = iconeIntraoral.width/2;
+	intraOralY = iconeIntraoral.height/2;
+	iconeIntraoral.x = 660 + intraOralX;
+	iconeIntraoral.y = 360 + intraOralY;
 	iconeIntraoral.alpha = 1;
-	iconeIntraoral.scale.x = 0.25;
-	iconeIntraoral.scale.y = 0.25;
+	iconeIntraoral.scale.x = 1;
+	iconeIntraoral.scale.y = 1;
 
-	iconeCpap.x = 800;
-	iconeCpap.y = 370;
+	cpapX = iconeCpap.width/2;
+	cpapY = iconeCpap.height/2;
+	iconeCpap.x = 800 + cpapX;
+	iconeCpap.y = 360 + cpapY;
 	iconeCpap.alpha = 1;
-	iconeCpap.scale.x = 0.25;
-	iconeCpap.scale.y = 0.25;
+	iconeCpap.scale.x = 1;
+	iconeCpap.scale.y = 1;
 
 	primeiroCliqueTratamentos = true;
 }
@@ -1901,12 +1987,12 @@ function limites(modal, limite1, limite2, limite3, limite4, tela, ajuste){
 
 	limiteBaixo = reg.modal.getModalItem(modal, limite2);
 	limiteBaixo.width = game.width;
-	limiteBaixo.height = game.height-(game.height/2 + tela.height/2);
+	limiteBaixo.height = game.height - (game.height/2 + tela.height/2);
 	limiteBaixo.x = 0;
 	limiteBaixo.y = (game.height/2 + tela.height/2) + ajuste;
 
 	limiteEsquerda = reg.modal.getModalItem(modal, limite3);
-	limiteEsquerda.width = game.width/2-tela.width/2;
+	limiteEsquerda.width = game.width/2 - tela.width/2;
 	limiteEsquerda.height = game.height;
 	limiteEsquerda.x = 0;
 	limiteEsquerda.y = 0;
@@ -1916,4 +2002,10 @@ function limites(modal, limite1, limite2, limite3, limite4, tela, ajuste){
 	limiteDireito.height = game.height;
 	limiteDireito.x = game.width/2 + tela.width/2;
 	limiteDireito.y = 0;
+}
+
+// Imagem e a ancoragem (0, 0): esquerdo-cima, (0,1):esquerdo-baixo, (0.5,0.5)
+function alinhar(imagem, x, y){
+	imagem.anchor.x = x;
+	imagem.anchor.y = y;
 }
