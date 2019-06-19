@@ -39,7 +39,7 @@ var pergunta5, pergunta5Balao1, pergunta5Balao2, pergunta5Balao3;
 var pergunta6, pergunta6Balao1, pergunta6Balao2;
 var primeiroCliqueDuvidas = true;
 var fimPrimeiroCliqueDuvidas = false;
-var transicaoDuvidas = false;					   
+var transicaoDuvidas = false;
 
 // Tela Creditos
 var telaCreditos, textoCreditos;
@@ -234,17 +234,18 @@ function create (){
 	// GRUPO APRESENTACAO
 	// Modelo para voltar a local original depois de aplicar ancoragem
 	grupoApresentacaoModelo = game.add.sprite(106, 100000, 'grupoApresentacao');
-	grupoApresentacao = game.add.sprite(106, 340 + grupoApresentacaoModelo.height/2, 'grupoApresentacao');																																		   
+	grupoApresentacao = game.add.sprite(106, 340 + grupoApresentacaoModelo.height/2, 'grupoApresentacao');
 	grupoApresentacao.inputEnabled = true;
 	grupoApresentacao.events.onInputDown.add(showModalApresentacao, this);
 	alinhar(grupoApresentacao, 0, 0.5);
+
 	// GRUPO TRATAMENTOS
 	// Modelo para voltar a local original depois de aplicar ancoragem
 	grupoTratamentosModelo = game.add.sprite(106, 100000, 'grupoTratamentos');
 	grupoTratamentos = game.add.sprite(308, 150, 'grupoTratamentos');
 	grupoTratamentos.inputEnabled = true;
 	grupoTratamentos.events.onInputDown.add(showModalTratamentos, this);
-	alinhar(grupoTratamentos, 0, 0);	   
+	alinhar(grupoTratamentos, 0, 0);
 
 	iconeHigiene = reg.modal.getModalItem("modalTratamentos", 2);
 	iconeHigiene.inputEnabled = true;
@@ -254,27 +255,27 @@ function create (){
 	iconeRemedio = reg.modal.getModalItem("modalTratamentos", 3);
 	iconeRemedio.inputEnabled = true;
 	iconeRemedio.events.onInputDown.add(function() {rearranjaIconesTratamentos('iconeRemedio');}, this);
-	alinhar(iconeRemedio, 0.5, 0.5);					   
+	alinhar(iconeRemedio, 0.5, 0.5);
 
 	iconeFono = reg.modal.getModalItem("modalTratamentos", 4);
 	iconeFono.inputEnabled = true;
 	iconeFono.events.onInputDown.add(function() {rearranjaIconesTratamentos('iconeFono');}, this);
-	alinhar(iconeFono, 0.5, 0.5);					
+	alinhar(iconeFono, 0.5, 0.5);
 
 	iconeCirugia = reg.modal.getModalItem("modalTratamentos", 5);
 	iconeCirugia.inputEnabled = true;
 	iconeCirugia.events.onInputDown.add(function() {rearranjaIconesTratamentos('iconeCirugia');}, this);
-	alinhar(iconeCirugia, 0.5, 0.5);						   
+	alinhar(iconeCirugia, 0.5, 0.5);
 
 	iconeIntraoral = reg.modal.getModalItem("modalTratamentos", 6);
 	iconeIntraoral.inputEnabled = true;
 	iconeIntraoral.events.onInputDown.add(function() {rearranjaIconesTratamentos('iconeIntraoral');}, this);
-	alinhar(iconeIntraoral, 0.5, 0.5);							 
+	alinhar(iconeIntraoral, 0.5, 0.5);
 
 	iconeCpap = reg.modal.getModalItem("modalTratamentos", 7);
 	iconeCpap.inputEnabled = true;
 	iconeCpap.events.onInputDown.add(function() {rearranjaIconesTratamentos('iconeCpap');}, this);
-	alinhar(iconeCpap, 0.5, 0.5);						
+	alinhar(iconeCpap, 0.5, 0.5);
 
 	// GRUPO CPAP
 	// Modelo para voltar a local original depois de aplicar ancoragem
@@ -293,7 +294,7 @@ function create (){
 	alinhar(grupoPerguntas, 1, 0.5);
 	frameResposta = game.add.sprite(106, 100000, 'frameResposta');
 	frameResposta.alpha = 0;
-	celular = game.add.sprite(106, 100000, 'celular');							   
+	celular = game.add.sprite(106, 100000, 'celular');
 
 	// Modal CPAP
 	// Aparelho e personagens original para retornar ao tamanho normal
@@ -360,8 +361,9 @@ function create (){
 
 function update () {
 
+	// console.log(iconeCpap.x + " - " + iconeCpap.y);
 	// Verificadores animação tela Tratamentos - Início
-	if(iconeCpap.x == 860.5 && iconeCpap.y == 285.5) {
+	if(iconeCpap.x == 874.5 && iconeCpap.y == 295.5) {
 		fimPrimeiroClique = true;
 	}
 
@@ -373,7 +375,7 @@ function update () {
 		   textoIntraoral.alpha > 0 && textoIntraoral.alpha < 1 || 
 		   textoCpapTrat.alpha  > 0 && textoCpapTrat.alpha  < 1) {
 				transicao = true; // Enquanto estiver no Fade In dos textos
-		} else if(iconeCpap.x == 860.5 && iconeCpap.y == 285.5) { // Fim da animação que move os icones
+		} else if(iconeCpap.x == 874.5 && iconeCpap.y == 295.5) { // Fim da animação que move os icones
 			transicao = false;
 		}
 	}
@@ -405,8 +407,8 @@ function update () {
 		   !primeiroCliqueDuvidas && celular.x != 180 && frameResposta.alpha > 0){
 
 				transicaoDuvidas = true;
-		}else if (celular.x == 180) {
-			transicaoDuvidas=false;
+		} else if (celular.x == 180) {
+			transicaoDuvidas = false;
 		}
 	}
 	//Verificadores animação tela Duvidas - Fim
@@ -766,7 +768,7 @@ function createModals() {
 				type : "image",
 				content: "textoArrasteCpap",
 				offsetY: 190,
-				offsetX: -285
+				offsetX: -280
 			},
 			{
 				type: "image",
@@ -1186,37 +1188,37 @@ function showModalTratamentos(){
 	textoDiagnostico.y = 150;
 
 	tituloTratamento = reg.modal.getModalItem("modalTratamentos", 10);
-	tituloTratamento.x = 520;
+	tituloTratamento.x = 510;
 	tituloTratamento.y = 100;
 
 	textoHigiene = reg.modal.getModalItem("modalTratamentos", 11);
-	textoHigiene.x = 520;
-	textoHigiene.y = 350;
+	textoHigiene.x = 510;
+	textoHigiene.y = 365;
 	textoHigiene.alpha = 0;
 
 	textoRemedio = reg.modal.getModalItem("modalTratamentos", 12);
-	textoRemedio.x = 520;
-	textoRemedio.y = 350;
+	textoRemedio.x = 510;
+	textoRemedio.y = 365;
 	textoRemedio.alpha = 0;
 
 	textoFono = reg.modal.getModalItem("modalTratamentos", 13);
-	textoFono.x = 520;
-	textoFono.y = 350;
+	textoFono.x = 510;
+	textoFono.y = 365;
 	textoFono.alpha = 0;
 
 	textoCirugia = reg.modal.getModalItem("modalTratamentos", 14);
-	textoCirugia.x = 520;
-	textoCirugia.y = 350;
+	textoCirugia.x = 510;
+	textoCirugia.y = 365;
 	textoCirugia.alpha = 0;
 
 	textoIntraoral = reg.modal.getModalItem("modalTratamentos", 15);
-	textoIntraoral.x = 520;
-	textoIntraoral.y = 350;
+	textoIntraoral.x = 510;
+	textoIntraoral.y = 365;
 	textoIntraoral.alpha = 0;
 
 	textoCpapTrat = reg.modal.getModalItem("modalTratamentos", 16);
-	textoCpapTrat.x = 520;
-	textoCpapTrat.y = 350;
+	textoCpapTrat.x = 510;
+	textoCpapTrat.y = 365;
 	textoCpapTrat.alpha = 0;
 
 	reg.modal.showModal("modalTratamentos");
@@ -1381,7 +1383,7 @@ function mostraFrameDeRespostas(perguntaClicada) {
 				tween.to( { alpha: 1 }, 1500, "Linear", 0);
 				tween.start();
 			}, this);
-		}, this);   
+		}, this);
 
 		pergunta1.alpha = 0.5;
 		pergunta2.alpha = 1;
@@ -1441,7 +1443,7 @@ function mostraFrameDeRespostas(perguntaClicada) {
 		pergunta4.alpha = 1;
 		pergunta5.alpha = 0.5;
 		pergunta6.alpha = 0.5;
-  
+
 	} else if(perguntaClicada === 'pergunta5' && !transicaoDuvidas) {
 		reiniciaBaloesDeDuvidas();
 
@@ -1467,7 +1469,7 @@ function mostraFrameDeRespostas(perguntaClicada) {
 		pergunta4.alpha = 0.5;
 		pergunta5.alpha = 1;
 		pergunta6.alpha = 0.5;
-  
+
 	} else if(perguntaClicada === 'pergunta6' && !transicaoDuvidas) {
 		reiniciaBaloesDeDuvidas();
 
@@ -1553,7 +1555,7 @@ function showModalPerguntas(){
 
 	pergunta1Balao1 = reg.modal.getModalItem("modalPerguntas", 11);
 	pergunta1Balao1.x = 505;
-	pergunta1Balao1.y = 215;
+	pergunta1Balao1.y = 205;
 	pergunta1Balao1.alpha = 0;
 
 	pergunta1Balao2 = reg.modal.getModalItem("modalPerguntas", 12);
@@ -1563,12 +1565,12 @@ function showModalPerguntas(){
 
 	pergunta1Balao3 = reg.modal.getModalItem("modalPerguntas", 13);
 	pergunta1Balao3.x = 470;
-	pergunta1Balao3.y = 345;
+	pergunta1Balao3.y = 352;
 	pergunta1Balao3.alpha = 0;
 
 	pergunta1Balao4 = reg.modal.getModalItem("modalPerguntas", 14);
 	pergunta1Balao4.x = 470;
-	pergunta1Balao4.y = 420;
+	pergunta1Balao4.y = 435;
 	pergunta1Balao4.alpha = 0;
 
 	pergunta2 = reg.modal.getModalItem("modalPerguntas", 15);
@@ -1579,7 +1581,7 @@ function showModalPerguntas(){
 
 	pergunta2Balao1 = reg.modal.getModalItem("modalPerguntas", 16);
 	pergunta2Balao1.x = 505;
-	pergunta2Balao1.y = 215;
+	pergunta2Balao1.y = 205;
 	pergunta2Balao1.alpha = 0;
 
 	pergunta2Balao2 = reg.modal.getModalItem("modalPerguntas", 17);
@@ -1589,7 +1591,7 @@ function showModalPerguntas(){
 
 	pergunta2Balao3 = reg.modal.getModalItem("modalPerguntas", 18);
 	pergunta2Balao3.x = 470;
-	pergunta2Balao3.y = 367;
+	pergunta2Balao3.y = 375;
 	pergunta2Balao3.alpha = 0;
 
 	pergunta3 = reg.modal.getModalItem("modalPerguntas", 19);
@@ -1600,7 +1602,7 @@ function showModalPerguntas(){
 
 	pergunta3Balao1 = reg.modal.getModalItem("modalPerguntas", 20);
 	pergunta3Balao1.x = 505;
-	pergunta3Balao1.y = 215;
+	pergunta3Balao1.y = 205;
 	pergunta3Balao1.alpha = 0;
 
 	pergunta3Balao2 = reg.modal.getModalItem("modalPerguntas", 21);
@@ -1610,7 +1612,7 @@ function showModalPerguntas(){
 
 	pergunta3Balao3 = reg.modal.getModalItem("modalPerguntas", 22);
 	pergunta3Balao3.x = 470;
-	pergunta3Balao3.y = 370;
+	pergunta3Balao3.y = 405;
 	pergunta3Balao3.alpha = 0;
 
 	pergunta4 = reg.modal.getModalItem("modalPerguntas", 23);
@@ -1621,17 +1623,17 @@ function showModalPerguntas(){
 
 	pergunta4Balao1 = reg.modal.getModalItem("modalPerguntas", 24);
 	pergunta4Balao1.x = 505;
-	pergunta4Balao1.y = 215;
+	pergunta4Balao1.y = 205;
 	pergunta4Balao1.alpha = 0;
 
 	pergunta4Balao2 = reg.modal.getModalItem("modalPerguntas", 25);
 	pergunta4Balao2.x = 470;
-	pergunta4Balao2.y = 270;
+	pergunta4Balao2.y = 250;
 	pergunta4Balao2.alpha = 0;
 
 	pergunta4Balao3 = reg.modal.getModalItem("modalPerguntas", 26);
 	pergunta4Balao3.x = 470;
-	pergunta4Balao3.y = 370;
+	pergunta4Balao3.y = 385;
 	pergunta4Balao3.alpha = 0;
 
 	pergunta5 = reg.modal.getModalItem("modalPerguntas", 27);
@@ -1642,17 +1644,17 @@ function showModalPerguntas(){
 
 	pergunta5Balao1 = reg.modal.getModalItem("modalPerguntas", 28);
 	pergunta5Balao1.x = 505;
-	pergunta5Balao1.y = 215;
+	pergunta5Balao1.y = 205;
 	pergunta5Balao1.alpha = 0;
 
 	pergunta5Balao2 = reg.modal.getModalItem("modalPerguntas", 29);
 	pergunta5Balao2.x = 470;
-	pergunta5Balao2.y = 270;
+	pergunta5Balao2.y = 250;
 	pergunta5Balao2.alpha = 0;
 
 	pergunta5Balao3 = reg.modal.getModalItem("modalPerguntas", 30);
 	pergunta5Balao3.x = 470;
-	pergunta5Balao3.y = 360;
+	pergunta5Balao3.y = 355;
 	pergunta5Balao3.alpha = 0;
 
 	pergunta6 = reg.modal.getModalItem("modalPerguntas", 31);
@@ -1663,12 +1665,12 @@ function showModalPerguntas(){
 
 	pergunta6Balao1 = reg.modal.getModalItem("modalPerguntas", 32);
 	pergunta6Balao1.x = 505;
-	pergunta6Balao1.y = 215;
+	pergunta6Balao1.y = 205;
 	pergunta6Balao1.alpha = 0;
 
 	pergunta6Balao2 = reg.modal.getModalItem("modalPerguntas", 33);
 	pergunta6Balao2.x = 470;
-	pergunta6Balao2.y = 270;
+	pergunta6Balao2.y = 250;
 	pergunta6Balao2.alpha = 0;
 
 	reg.modal.showModal("modalPerguntas");
@@ -1762,33 +1764,33 @@ function rearranjaIconesTratamentos(iconeClicado) {
 
 	if(primeiroCliqueTratamentos === true ) {
 		tweenHigiene = game.add.tween(iconeHigiene);
-		tweenHigiene.to({ x: [iconeHigiene.x, iconeHigiene.x, iconeHigiene.x, iconeHigiene.x], y: [120 + higieneY, 120 + higieneY, 120 + higieneY, 120 + higieneY] }, 3000, "Linear");
-		tweenHigiene.start();	
+		tweenHigiene.to({ x: [iconeHigiene.x - 20, iconeHigiene.x - 20, iconeHigiene.x - 20, iconeHigiene.x - 20], y: [120 + higieneY, 120 + higieneY, 120 + higieneY, 120 + higieneY] }, 3000, "Linear");
+		tweenHigiene.start();
 		tweenHigiene = game.add.tween(iconeHigiene.scale).to( { x: 0.60, y: 0.60 }, 1000, Phaser.Easing.Elastic.Out, true);
 
 		tweenFono = game.add.tween(iconeFono);
-		tweenFono.to({ x: [iconeFono.x, iconeFono.x, 650 + fonoX, 650 + fonoX], y: [120 + fonoY, 120 + fonoY, 120 + fonoY, 120 + fonoY] }, 3000, "Linear");
-		tweenFono.start();	
+		tweenFono.to({ x: [iconeFono.x, iconeFono.x, 631 + fonoX, 631 + fonoX], y: [120 + fonoY, 120 + fonoY, 120 + fonoY, 120 + fonoY] }, 3000, "Linear");
+		tweenFono.start();
 		tweenFono = game.add.tween(iconeFono.scale).to( { x: 0.60, y: 0.60 }, 1000, Phaser.Easing.Elastic.Out, true);
 
 		tweenRemedio = game.add.tween(iconeRemedio);
-		tweenRemedio.to({ x: [iconeRemedio.x, iconeRemedio.x, 800 + remedioX, 800 + remedioX], y: [120 + remedioY, 120 + remedioY, 120 + remedioY, 120 + remedioY] }, 3000, "Linear");
-		tweenRemedio.start();	
+		tweenRemedio.to({ x: [iconeRemedio.x, iconeRemedio.x, 814 + remedioX, 814 + remedioX], y: [120 + remedioY, 120 + remedioY, 120 + remedioY, 120 + remedioY] }, 3000, "Linear");
+		tweenRemedio.start();
 		tweenRemedio = game.add.tween(iconeRemedio.scale).to( { x: 0.60, y: 0.60 }, 1000, Phaser.Easing.Elastic.Out, true);
 
 		tweenCirurgia = game.add.tween(iconeCirugia);
-		tweenCirurgia.to({ x: [iconeCirugia.x, iconeCirugia.x, iconeCirugia.x, iconeCirugia.x], y: [iconeCirugia.y, iconeCirugia.y, 210 + cirurgiaY, 210 + cirurgiaY] }, 3000, "Linear");
-		tweenCirurgia.start();	
+		tweenCirurgia.to({ x: [iconeCirugia.x - 20, iconeCirugia.x - 20, iconeCirugia.x - 20, iconeCirugia.x - 20], y: [iconeCirugia.y, iconeCirugia.y, 220 + cirurgiaY, 220 + cirurgiaY] }, 3000, "Linear");
+		tweenCirurgia.start();
 		tweenCirurgia = game.add.tween(iconeCirugia.scale).to( { x: 0.60, y: 0.60 }, 1000, Phaser.Easing.Elastic.Out, true);
 
 		tweenIntraoral = game.add.tween(iconeIntraoral);
-		tweenIntraoral.to({ x: [iconeIntraoral.x, iconeIntraoral.x, 660 + intraOralX, 660 + intraOralX], y: [iconeIntraoral.y, iconeIntraoral.y, 210 + intraOralY, 210 + intraOralY] }, 3000, "Linear");
-		tweenIntraoral.start();	
+		tweenIntraoral.to({ x: [iconeIntraoral.x, iconeIntraoral.x, 645 + intraOralX, 645 + intraOralX], y: [iconeIntraoral.y, iconeIntraoral.y, 220 + intraOralY, 220 + intraOralY] }, 3000, "Linear");
+		tweenIntraoral.start();
 		tweenIntraoral = game.add.tween(iconeIntraoral.scale).to( { x: 0.60, y: 0.60 }, 1000, Phaser.Easing.Elastic.Out, true);
 
 		tweenCpap = game.add.tween(iconeCpap);
-		tweenCpap.to({ x: [iconeCpap.x, iconeCpap.x, 800 + cpapX, 800 + cpapX], y: [iconeIntraoral.y, iconeIntraoral.y, 210 + cpapY, 210 + cpapY] }, 3000, "Linear");
-		tweenCpap.start();	
+		tweenCpap.to({ x: [iconeCpap.x, iconeCpap.x, 814 + cpapX, 814 + cpapX], y: [iconeIntraoral.y, iconeIntraoral.y, 220 + cpapY, 220 + cpapY] }, 3000, "Linear");
+		tweenCpap.start();
 		tweenCpap = game.add.tween(iconeCpap.scale).to( { x: 0.60, y: 0.60 }, 1000, Phaser.Easing.Elastic.Out, true);
 
 		primeiroCliqueTratamentos = false;
@@ -1908,7 +1910,7 @@ function reiniciaIconesTratamentos() {
 	// iconeX e iconeY são variáveis que corrigem a localização por conta da ancorage
 	higieneX = iconeHigiene.width/2;
 	higieneY = iconeHigiene.height/2;
-	iconeHigiene.x = 520 + higieneX;
+	iconeHigiene.x = 510 + higieneX;
 	iconeHigiene.y = 150 + higieneY;
 	iconeHigiene.alpha = 1;
 	iconeHigiene.scale.x = 1;
@@ -1916,7 +1918,7 @@ function reiniciaIconesTratamentos() {
 
 	fonoX = iconeFono.width/2;
 	fonoY = iconeFono.height/2;
-	iconeFono.x = 650 + fonoX;
+	iconeFono.x = 632 + fonoX;
 	iconeFono.y = 150 + fonoY;
 	iconeFono.alpha = 1;
 	iconeFono.scale.x = 1;
@@ -1924,7 +1926,7 @@ function reiniciaIconesTratamentos() {
 
 	remedioX = iconeRemedio.width/2;
 	remedioY = iconeRemedio.height/2;
-	iconeRemedio.x = 800 + remedioX;
+	iconeRemedio.x = 790 + remedioX;
 	iconeRemedio.y = 150 + remedioY;
 	iconeRemedio.alpha = 1;
 	iconeRemedio.scale.x = 1;
@@ -1932,7 +1934,7 @@ function reiniciaIconesTratamentos() {
 
 	cirurgiaX = iconeCirugia.width/2;
 	cirurgiaY = iconeCirugia.height/2;
-	iconeCirugia.x = 520 + cirurgiaX;
+	iconeCirugia.x = 510 + cirurgiaX;
 	iconeCirugia.y = 360 + cirurgiaY;
 	iconeCirugia.alpha = 1;
 	iconeCirugia.scale.x = 1;
@@ -1940,7 +1942,7 @@ function reiniciaIconesTratamentos() {
 
 	intraOralX = iconeIntraoral.width/2;
 	intraOralY = iconeIntraoral.height/2;
-	iconeIntraoral.x = 660 + intraOralX;
+	iconeIntraoral.x = 645 + intraOralX;
 	iconeIntraoral.y = 360 + intraOralY;
 	iconeIntraoral.alpha = 1;
 	iconeIntraoral.scale.x = 1;
@@ -1948,7 +1950,7 @@ function reiniciaIconesTratamentos() {
 
 	cpapX = iconeCpap.width/2;
 	cpapY = iconeCpap.height/2;
-	iconeCpap.x = 800 + cpapX;
+	iconeCpap.x = 788 + cpapX;
 	iconeCpap.y = 360 + cpapY;
 	iconeCpap.alpha = 1;
 	iconeCpap.scale.x = 1;
@@ -1958,7 +1960,7 @@ function reiniciaIconesTratamentos() {
 }
 
 function alteraEscalaImagem(imagem, escala){
-	if (imagem.input.pointerOver()) {
+	if (imagem.input.pointerOver() && imagem.input.checkPointerOver(game.input.activePointer)) {
 		tween = game.add.tween(imagem.scale).to( { x: escala, y: escala }, 1000, Phaser.Easing.Circular.Out, true);
 	} else {
 		tween = game.add.tween(imagem.scale).to( { x: 1, y: 1}, 1000, Phaser.Easing.Circular.Out, true);
