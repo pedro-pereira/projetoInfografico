@@ -18,6 +18,7 @@ var telaAos, tituloAos, tituloSintomas, tituloConsequencia, textoAos, textoConse
 var telaTratamentos, tituloDiagnostico, textoDiagnostico, tituloTratamento;
 var iconeHigiene, iconeRemedio, iconeFono, iconeCirugia, iconeIntraoral, iconeCpap;
 var textoHigiene, textoRemedio, textoFono, textoCirugia, textoIntraoral, textoCpapTrat;
+var linkPolissonografia;
 var primeiroCliqueTratamentos;
 var transicao = false;
 var fimPrimeiroClique = false;
@@ -109,6 +110,7 @@ function preload (){
 	game.load.image('tituloDiagnostico'                  , 'imagens/tela-2-titulo-diagnostico.png');
 	game.load.image('tituloTratamentos'                  , 'imagens/tela-2-titulo-tratamentos.png');
 	game.load.image('textoDiagnostico'                   , 'imagens/tela-2-texto-diagnostico.png');
+	game.load.image('linkPolissonografia'                , 'imagens/tela-2-link-polissonografia.png');
 
 	game.load.image('iconeHigiene'                       , 'imagens/tela-2-icone-exercicios.png');
 	game.load.image('iconeRemedio'                       , 'imagens/tela-2-icone-remedio.png');
@@ -320,7 +322,7 @@ function create (){
 	botaoPlay = reg.modal.getModalItem("modalCpap", 5);
 	botaoPlay.inputEnabled = true;
 	botaoPlay.x = 800;
-	botaoPlay.y = 470;
+	botaoPlay.y = 480;
 
 	textoArrasteCpap = reg.modal.getModalItem("modalCpap", 6);
 	textoArrasteCpap.alpha = 0;
@@ -714,6 +716,14 @@ function createModals() {
 						hideModalTratamentos();
 				 	}
 				}
+			},
+			{
+				type: "image",
+				content: "linkPolissonografia",
+				callback : function(){
+					alert("Em breve um vídeo novo. Aguarde.");
+					//window.open("https://www.youtube.com/embed/b61ZX2IgOww");
+				}
 			}
 		]
 	});
@@ -760,7 +770,8 @@ function createModals() {
 				offsetY: 150,
 				offsetX: 290,
 				callback : function(){
-					window.open("https://www.youtube.com/embed/b61ZX2IgOww");
+					alert("Em breve um vídeo novo. Aguarde.");
+					// window.open("https://www.youtube.com/embed/b61ZX2IgOww");
 					// abreJanelaDeVideo();
 				}
 			},
@@ -768,7 +779,7 @@ function createModals() {
 				type : "image",
 				content: "textoArrasteCpap",
 				offsetY: 190,
-				offsetX: -280
+				offsetX: -300
 			},
 			{
 				type: "image",
@@ -1220,6 +1231,10 @@ function showModalTratamentos(){
 	textoCpapTrat.x = 510;
 	textoCpapTrat.y = 365;
 	textoCpapTrat.alpha = 0;
+	
+	linkPolissonografia = reg.modal.getModalItem("modalTratamentos", 21);
+	linkPolissonografia.x = 120;
+	linkPolissonografia.y = 510;
 
 	reg.modal.showModal("modalTratamentos");
 }
@@ -1270,7 +1285,7 @@ function showModalCpap(){
 
 	textoInformacoes = reg.modal.getModalItem("modalCpap", 16);
 	textoInformacoes.x = 735;
-	textoInformacoes.y = 440;
+	textoInformacoes.y = 420;
 
 	aparelhoCpap.alpha = 0.1;
 	tween = game.add.tween(aparelhoCpap).to( { alpha: 1 }, 1000, "Linear", true, 100);
